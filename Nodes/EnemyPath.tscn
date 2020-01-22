@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/EnemyPath.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Images/Enemy.png" type="Texture" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 15.9386, 15.9153 )
+
+[node name="EnemyPath" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Path" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="Follow" type="PathFollow2D" parent="Path"]
+rotate = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+max_health = 100
+
+[node name="Area" type="Area2D" parent="Path/Follow"]
+
+[node name="Collision" type="CollisionShape2D" parent="Path/Follow/Area"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Path/Follow/Area/Collision"]
+texture = ExtResource( 3 )
+[connection signal="enemy_killed" from="Path/Follow" to="." method="_on_Follow_enemy_killed"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Map.gd" type="Script" id=1]
+[ext_resource path="res://Nodes/Tower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/Spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Background.png" type="Texture" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -70.7858, 215.422, 0, 0, 0, 0, 1062.98, 222.238, 0, 0, 0, 0, 1065.25, 438.085, 0, 0, 0, 0, 58.7221, 440.357, 0, 0, 0, 0, 56.45, 653.931, 0, 0, 0, 0, 1333.35, 656.203 )
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+tower_resource = ExtResource( 2 )
+spawner_resource = ExtResource( 3 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Path" type="Path2D" parent="Background"]
+curve = SubResource( 1 )
