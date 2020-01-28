@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/EnemyPath.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
-[ext_resource path="res://Images/Enemy.png" type="Texture" id=3]
+[ext_resource path="res://Nodes/DamageNumber.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Enemy.png" type="Texture" id=4]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -25,6 +26,7 @@ __meta__ = {
 "_edit_group_": true
 }
 max_health = 100
+damage_number_resource = ExtResource( 3 )
 
 [node name="Area" type="Area2D" parent="Path/Follow"]
 
@@ -32,5 +34,5 @@ max_health = 100
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Path/Follow/Area/Collision"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 [connection signal="enemy_killed" from="Path/Follow" to="." method="_on_Follow_enemy_killed"]

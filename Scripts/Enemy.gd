@@ -15,6 +15,7 @@ var state = eEnemy.MOVE
 
 # Variables
 export(int) var max_health
+export(PackedScene) var damage_number_resource
 var health
 
 # Functions
@@ -26,6 +27,9 @@ func move(delta):
 func hit(bullet):
 	health -= bullet.damage
 	bullet.queue_free()
+	var damage_number = damage_number_resource.instance()
+	damage_number.init(bullet.damage, self.global_position)
+	get_tree().get_root().get_node("Main").add_child(damage_number)
 	if health <= 0:
 		dead()
 
