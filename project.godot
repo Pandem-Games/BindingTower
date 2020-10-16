@@ -35,6 +35,13 @@ config/icon="res://Images/icon.png"
 Constants="*res://Scripts/Constants.gd"
 RN="*res://Scripts/RNG.gd"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

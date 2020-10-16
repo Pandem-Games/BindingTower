@@ -28,7 +28,7 @@ func hit(bullet):
 	health -= bullet.damage
 	bullet.queue_free()
 	var damage_number = damage_number_resource.instance()
-	damage_number.init(bullet.damage, self.global_position)
+	damage_number.init(bullet.damage, self.position)
 	get_tree().get_root().get_node("Main").add_child(damage_number)
 	if health <= 0:
 		dead()

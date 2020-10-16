@@ -11,6 +11,7 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
+scale = Vector2( 1.49985, 1.49994 )
 script = ExtResource( 1 )
 tower_resource = ExtResource( 2 )
 spawner_resource = ExtResource( 3 )
