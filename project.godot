@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="BindingTower"
-run/main_scene="res://Nodes/Scenes/Test.tscn"
+run/main_scene="res://Nodes/Scenes/Menu/TitleScreen.tscn"
 config/icon="res://Images/icon.png"
 
 [autoload]
@@ -44,4 +44,5 @@ window/stretch/aspect="keep"
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
