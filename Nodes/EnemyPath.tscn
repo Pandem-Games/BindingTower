@@ -3,7 +3,8 @@
 [ext_resource path="res://Scripts/EnemyPath.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Nodes/DamageNumber.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Images/Enemy.png" type="Texture" id=4]
+[ext_resource path="res://Assests/Images/Enemy.png" type="Texture" id=4]
+
 
 [sub_resource type="Curve2D" id=1]
 _data = {
