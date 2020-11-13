@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/options.gd" type="Script" id=1]
+[ext_resource path="res://Assests/Font/yoster.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/Button.gd" type="Script" id=3]
+[ext_resource path="res://Assests/font/saved_styles/OptionText.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assests/Font/saved_styles/OptionText.tres" type="DynamicFont" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 2 )
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 121.498
+margin_top = 80.0
+margin_right = -118.502
+margin_bottom = -79.9999
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_back" type="Button" parent="."]
+margin_right = 101.0
+margin_bottom = 41.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 5 )
+text = "Back"
+align = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Options"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 80.0
+margin_bottom = -0.00012207
+size_flags_horizontal = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 345.0
+margin_right = 1334.0
+margin_bottom = 41.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_constants/separation = 300
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_video" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_right = 107.0
+margin_bottom = 41.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 4 )
+text = "Video"
+align = 0
+script = ExtResource( 3 )
+
+[node name="btn_audio" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_left = 407.0
+margin_right = 518.0
+margin_bottom = 41.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 4 )
+text = "Audio"
+align = 0
+script = ExtResource( 3 )
+
+[node name="btn_controls" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_left = 818.0
+margin_right = 989.0
+margin_bottom = 41.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 5 )
+text = "Controls"
+align = 0
+script = ExtResource( 3 )

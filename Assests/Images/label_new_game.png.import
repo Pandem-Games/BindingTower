@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/label_new_game.png-564080c572a52e2f1929784c3c952eb0.stex"
+path="res://.import/label_new_game.png-762d4b9fc36593f0bbb6c7c1f15818f7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/label_new_game.png"
-dest_files=[ "res://.import/label_new_game.png-564080c572a52e2f1929784c3c952eb0.stex" ]
+source_file="res://Assests/Images/label_new_game.png"
+dest_files=[ "res://.import/label_new_game.png-762d4b9fc36593f0bbb6c7c1f15818f7.stex" ]
 
 [params]
 

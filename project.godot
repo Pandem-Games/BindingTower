@@ -28,12 +28,13 @@ _global_script_class_icons={
 
 config/name="BindingTower"
 run/main_scene="res://Nodes/Scenes/Menu/TitleScreen.tscn"
-config/icon="res://Images/icon.png"
+config/icon="res://Assests/Images/icon.png"
 
 [autoload]
 
 Constants="*res://Scripts/Constants.gd"
 RN="*res://Scripts/RNG.gd"
+Options="*res://Globals/Options.tscn"
 
 [display]
 

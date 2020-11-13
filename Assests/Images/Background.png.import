@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/label_continue.png-2661cfbb2a5a21d74889661f79633cf8.stex"
+path="res://.import/Background.png-86fab9af0bbcb4dfc9bcd7f4c68883cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/label_continue.png"
-dest_files=[ "res://.import/label_continue.png-2661cfbb2a5a21d74889661f79633cf8.stex" ]
+source_file="res://Assests/Images/Background.png"
+dest_files=[ "res://.import/Background.png-86fab9af0bbcb4dfc9bcd7f4c68883cf.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
