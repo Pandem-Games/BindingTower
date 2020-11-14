@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Enemy.png-dea924f591eb31b2c3797f3f1f653233.stex"
+path="res://.import/BasicTower.png-7e207d7e30f8b407553b651a895acaba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Enemy.png"
-dest_files=[ "res://.import/Enemy.png-dea924f591eb31b2c3797f3f1f653233.stex" ]
+source_file="res://Assests/Images/BasicTower.png"
+dest_files=[ "res://.import/BasicTower.png-7e207d7e30f8b407553b651a895acaba.stex" ]
 
 [params]
 

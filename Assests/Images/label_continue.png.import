@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/characters.png-856c15252ba8ca4757aed5ae4ccdcac4.stex"
+path="res://.import/label_continue.png-1ccc2553eeba0eda156e9b9fca891cb2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/characters.png"
-dest_files=[ "res://.import/characters.png-856c15252ba8ca4757aed5ae4ccdcac4.stex" ]
+source_file="res://Assests/Images/label_continue.png"
+dest_files=[ "res://.import/label_continue.png-1ccc2553eeba0eda156e9b9fca891cb2.stex" ]
 
 [params]
 
