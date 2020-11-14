@@ -30,4 +30,3 @@ func wait():
 
 func finish():
 	pass
-

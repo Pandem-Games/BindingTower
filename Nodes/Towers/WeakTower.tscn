@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Tower.gd" type="Script" id=1]
+[ext_resource path="res://Nodes/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assests/Images/BasicTower.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.9664
+
+[node name="Tower" type="Sprite"]
+position = Vector2( -0.117987, -8.88201 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+distance = 100.0
+cooldown_time = 1.0
+bullet_resource = ExtResource( 2 )
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Shape" type="CollisionShape2D" parent="Area"]
+shape = SubResource( 1 )
+[connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="area_exited" from="Area" to="." method="_on_Area_area_exited"]

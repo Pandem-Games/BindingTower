@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Map.gd" type="Script" id=1]
-[ext_resource path="res://Nodes/Tower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/Towers/WeakTower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Nodes/Spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assests/Images/Background.png" type="Texture" id=4]
 
@@ -27,3 +27,9 @@ __meta__ = {
 
 [node name="Path" type="Path2D" parent="Background"]
 curve = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="Background/Path"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/Path/Area2D"]
+position = Vector2( 130.97, 449.303 )
+scale = Vector2( 1.50185, 0.691505 )
