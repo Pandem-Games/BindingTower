@@ -9,3 +9,11 @@ const ENEMY_KILLED = "enemy_killed"
 
 # Groups
 const ENEMIES = "enemies"
+
+# Layers
+enum CollisionLayers {
+	MISC,
+	TOWERS,
+	ENEMIES,
+	PATH
+}

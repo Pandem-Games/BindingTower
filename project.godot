@@ -32,9 +32,10 @@ config/icon="res://Assests/Images/icon.png"
 
 [autoload]
 
-Constants="*res://Scripts/Constants.gd"
-RN="*res://Scripts/RNG.gd"
-Options="*res://Globals/Options.tscn"
+Constants="*res://Globals/Constants.gd"
+RN="*res://Globals/RNG.gd"
+Helpers="*res://Globals/Helpers.gd"
+Options="res://Globals/Options.tscn"
 
 [display]
 
@@ -45,5 +46,4 @@ window/stretch/aspect="keep"
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
