@@ -14,5 +14,6 @@ const ENEMIES = "enemies"
 enum CollisionLayers {
 	MISC,
 	TOWERS,
-	ENEMIES
+	ENEMIES,
+	PATH
 }

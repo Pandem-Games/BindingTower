@@ -58,6 +58,8 @@ func finish():
 func _ready():
 	# Changing the firing radius
 	area_shape.get_shape().radius = distance
+	print(area.visible)
+	
 	state = eTower.WAIT
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
