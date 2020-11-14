@@ -40,6 +40,7 @@ func _ready():
 		enemies.append(e)
 		var enemy = e.get_node("Path/Enemy")
 		# TODO: Send this in as a parameter to enemies...
+		enemy.connect(Constants.ENEMY_KILLED, self, "_on_Enemy_killed")
 		delays.append((RN.G.randf() * MAX_DELAY) as float)
 
 	elapsedTime = 0.0
@@ -77,5 +78,5 @@ func _process(delta):
 			wait()
 
 # Signal function ran when an enemy reaches the end of the path
-func _on_Enemy_finished():
+func _on_Enemy_killed():
 	print("Enemy finished path")
