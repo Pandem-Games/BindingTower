@@ -1,77 +1,63 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Tower.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assests/Images/BasicTower.png" type="Texture" id=3]
 
-[sub_resource type="VisualShader" id=1]
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// Output:0
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-mode = 1
-flags/light_only = false
-flags/unshaded = true
-nodes/fragment/0/position = Vector2( 420, 200 )
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 radius = 32.9664
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 13.1372, 16.8797 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12.939, 19.6707 )
 
 [node name="Tower" type="Sprite"]
-position = Vector2( -0.117987, -8.88201 )
 scale = Vector2( 2, 2 )
+z_index = 2
 texture = ExtResource( 3 )
 script = ExtResource( 1 )
-distance = 100.0
+radius = 100.0
 cooldown_time = 1.0
+circle_definition = 24
 bullet_resource = ExtResource( 2 )
+restricted_color = Color( 1, 0.376471, 0.376471, 1 )
 
 [node name="Range" type="Area2D" parent="."]
 show_behind_parent = true
-material = SubResource( 2 )
-collision_layer = 2
+collision_layer = 0
 collision_mask = 4
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shape" type="CollisionShape2D" parent="Range"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Area" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 10
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shape" type="CollisionShape2D" parent="Area"]
-position = Vector2( 0, 2.47488 )
-shape = SubResource( 4 )
+position = Vector2( 0, 1.48819 )
+scale = Vector2( 0.927428, 0.813392 )
+shape = SubResource( 2 )
 
-[node name="Restricted" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( -4.76837e-07, 0.110479 )
-scale = Vector2( 1, 1.00691 )
-texture = ExtResource( 3 )
+[node name="RangeUI" type="Polygon2D" parent="."]
+show_behind_parent = true
+color = Color( 0.835294, 0.835294, 0.835294, 0.533333 )
+
+[node name="TowerControl" type="Control" parent="."]
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="area_entered" from="Range" to="." method="_on_Range_area_entered"]
 [connection signal="area_exited" from="Range" to="." method="_on_Range_area_exited"]
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
 [connection signal="area_exited" from="Area" to="." method="_on_Area_area_exited"]
+[connection signal="gui_input" from="TowerControl" to="." method="_on_TowerControl_gui_input"]

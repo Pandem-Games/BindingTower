@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assests/Images/Rectangle.png" type="Texture" id=1]
 [ext_resource path="res://Assests/Images/icon.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/TowerButton.gd" type="Script" id=3]
 [ext_resource path="res://Nodes/Towers/WeakTower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assests/Images/BasicTower.png" type="Texture" id=5]
 
 [node name="MainUIMargin" type="MarginContainer"]
 anchor_right = 1.0
@@ -139,23 +140,23 @@ expand = true
 [node name="Gap" type="MarginContainer" parent="MainUI"]
 margin_top = 68.0
 margin_right = 1870.0
-margin_bottom = 951.0
+margin_bottom = 971.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Bottom" type="HBoxContainer" parent="MainUI"]
-margin_top = 955.0
+margin_top = 975.0
 margin_right = 1870.0
 margin_bottom = 1055.0
 mouse_filter = 2
 alignment = 1
 
 [node name="Bar" type="NinePatchRect" parent="MainUI/Bottom"]
-margin_left = 725.0
-margin_right = 1145.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 420, 100 )
+margin_left = 785.0
+margin_right = 1085.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 300, 80 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 120, 120 )
 patch_margin_left = 10
@@ -169,50 +170,56 @@ anchor_bottom = 1.0
 mouse_filter = 2
 custom_constants/margin_top = 15
 custom_constants/margin_bottom = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Towers" type="HBoxContainer" parent="MainUI/Bottom/Bar/Margin"]
 margin_top = 15.0
-margin_right = 420.0
-margin_bottom = 85.0
+margin_right = 300.0
+margin_bottom = 65.0
 mouse_filter = 2
 alignment = 1
 
 [node name="MarginContainer4" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
-margin_right = 21.0
-margin_bottom = 70.0
+margin_right = 13.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Tower1" type="Control" parent="MainUI/Bottom/Bar/Margin/Towers" groups=[
 "tower_menu_item",
 ]]
-margin_left = 25.0
-margin_right = 95.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 0 )
+margin_left = 17.0
+margin_right = 67.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
 script = ExtResource( 3 )
 tower_resource = ExtResource( 4 )
 
 [node name="Icon" type="TextureRect" parent="MainUI/Bottom/Bar/Margin/Towers/Tower1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
-margin_left = 99.0
-margin_right = 121.0
-margin_bottom = 70.0
+margin_left = 71.0
+margin_right = 85.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Tower2" type="Control" parent="MainUI/Bottom/Bar/Margin/Towers" groups=[
 "tower_menu_item",
 ]]
-margin_left = 125.0
-margin_right = 195.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 0 )
+margin_left = 89.0
+margin_right = 139.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
 
 [node name="Icon" type="TextureRect" parent="MainUI/Bottom/Bar/Margin/Towers/Tower2"]
 anchor_right = 1.0
@@ -221,19 +228,19 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
-margin_left = 199.0
-margin_right = 220.0
-margin_bottom = 70.0
+margin_left = 143.0
+margin_right = 156.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Tower3" type="Control" parent="MainUI/Bottom/Bar/Margin/Towers" groups=[
 "tower_menu_item",
 ]]
-margin_left = 224.0
-margin_right = 294.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 0 )
+margin_left = 160.0
+margin_right = 210.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
 
 [node name="Icon" type="TextureRect" parent="MainUI/Bottom/Bar/Margin/Towers/Tower3"]
 anchor_right = 1.0
@@ -242,19 +249,19 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
-margin_left = 298.0
-margin_right = 320.0
-margin_bottom = 70.0
+margin_left = 214.0
+margin_right = 228.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Tower4" type="Control" parent="MainUI/Bottom/Bar/Margin/Towers" groups=[
 "tower_menu_item",
 ]]
-margin_left = 324.0
-margin_right = 394.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 0 )
+margin_left = 232.0
+margin_right = 282.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
 
 [node name="Icon" type="TextureRect" parent="MainUI/Bottom/Bar/Margin/Towers/Tower4"]
 anchor_right = 1.0
@@ -263,9 +270,9 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="MarginContainer6" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
-margin_left = 398.0
-margin_right = 420.0
-margin_bottom = 70.0
+margin_left = 286.0
+margin_right = 300.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [connection signal="gui_input" from="MainUI/Bottom/Bar/Margin/Towers/Tower1" to="MainUI/Bottom/Bar/Margin/Towers/Tower1" method="_on_Tower_gui_input"]

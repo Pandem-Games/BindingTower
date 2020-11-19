@@ -4,8 +4,6 @@ extends CollisionPolygon2D
 enum eMaskingArea {DRAWING, FINISH}
 var state = eMaskingArea.DRAWING
 
-# Variables
-
 # Functions
 func draw():
 	pass
@@ -15,7 +13,7 @@ func _ready():
 	state = eMaskingArea.DRAWING
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	match state:
 		eMaskingArea.DRAWING:
 			draw()

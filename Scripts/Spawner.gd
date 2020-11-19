@@ -6,7 +6,7 @@ const POINT_VARIATION = 10.0
 const MAX_DELAY = 5.0
 
 # Signals
-signal enemy_spawned
+
 
 # State
 enum eSpawner {SPAWN, WAIT, FINISH}
@@ -38,9 +38,12 @@ func _ready():
 		var e = enemy_resource.instance()
 		e.init(curve_dup)
 		enemies.append(e)
-		var enemy = e.get_node("Path/Enemy")
+		var enemy: Node2D = e.get_node("Path/Enemy")
 		# TODO: Send this in as a parameter to enemies...
-		enemy.connect(Constants.ENEMY_KILLED, self, "_on_Enemy_killed")
+		var error: int = enemy.connect(Constants.ENEMY_KILLED, self, "_on_Enemy_killed")
+		if error != OK:
+			print("Error {", error, "} connecting signal: ", Constants.ENEMY_KILLED)
+			
 		delays.append((RN.G.randf() * MAX_DELAY) as float)
 
 	elapsedTime = 0.0

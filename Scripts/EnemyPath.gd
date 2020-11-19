@@ -1,11 +1,5 @@
 extends Node2D
 
-# Constants
-
-# Signals
-
-# State
-
 # Variables
 var curve: Curve2D
 

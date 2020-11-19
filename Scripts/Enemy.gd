@@ -5,7 +5,8 @@ class_name Enemy
 # Constants
 const speed = 100.0
 
-# Signals 
+# Signals
+signal enemy_spawned
 signal enemy_finished
 signal enemy_killed
 

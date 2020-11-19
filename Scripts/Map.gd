@@ -1,9 +1,5 @@
 extends Node2D
 
-# Constants
-
-# Signals
-
 # State
 enum eMap {WAIT, FINISH}
 var state = eMap.WAIT
@@ -19,11 +15,9 @@ func _ready():
 	spawner.init(path.curve.duplicate())
 	add_child(spawner)
 	
-	var tower = tower_resource.instance()
-	add_child(tower)
-	tower.position = Vector2(490, 146)
-	
-	spawner.connect(Constants.ENEMY_SPAWNED, tower, "_on_Enemy_spawned")
+#	var tower = tower_resource.instance()
+#	add_child(tower)
+#	tower.position = Vector2(490, 146)
 
 func wait():
 	pass
