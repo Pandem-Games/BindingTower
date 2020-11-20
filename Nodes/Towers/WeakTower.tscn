@@ -17,7 +17,7 @@ texture = ExtResource( 3 )
 script = ExtResource( 1 )
 radius = 100.0
 cooldown_time = 1.0
-circle_definition = 24
+circle_vertices = 24
 bullet_resource = ExtResource( 2 )
 restricted_color = Color( 1, 0.376471, 0.376471, 1 )
 
@@ -53,6 +53,7 @@ margin_left = -12.0
 margin_top = -12.0
 margin_right = 12.0
 margin_bottom = 16.0
+mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

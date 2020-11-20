@@ -2,22 +2,18 @@ extends Node2D
 
 # State
 enum eMap {WAIT, FINISH}
-var state = eMap.WAIT
+var state: int = eMap.WAIT
 
 # Variables
 export(PackedScene) var tower_resource
 export(PackedScene) var spawner_resource
-onready var path = $Background/Path
+onready var path := $Background/Path
 
 # Functions
 func _ready():
-	var spawner = spawner_resource.instance()
+	var spawner: Node2D = spawner_resource.instance()
 	spawner.init(path.curve.duplicate())
 	add_child(spawner)
-	
-#	var tower = tower_resource.instance()
-#	add_child(tower)
-#	tower.position = Vector2(490, 146)
 
 func wait():
 	pass
