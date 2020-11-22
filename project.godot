@@ -34,7 +34,7 @@ config/icon="res://Assests/Images/icon.png"
 
 Constants="*res://Scripts/Constants.gd"
 RN="*res://Scripts/RNG.gd"
-Options="*res://Globals/Options.tscn"
+Settings="*res://Globals/Settings.tscn"
 
 [display]
 
@@ -45,5 +45,4 @@ window/stretch/aspect="keep"
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
