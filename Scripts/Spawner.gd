@@ -37,9 +37,7 @@ func _ready():
 		enemies.append(enemy_path)
 		var enemy: Node2D = enemy_path.get_node("Path/Enemy")
 		
-		var error := enemy.connect(Constants.ENEMY_KILLED, self, "_on_Enemy_killed")
-		if error != OK:
-			print("Error {", error, "} connecting signal: ", Constants.ENEMY_KILLED)
+		Helpers.call_error_function(enemy, "connect", [Constants.ENEMY_KILLED, self, "_on_Enemy_killed"])
 			
 		delays.append((RN.G.randf() * MAX_DELAY) as float)
 

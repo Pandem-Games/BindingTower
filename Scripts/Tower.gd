@@ -78,7 +78,6 @@ func finish():
 func _ready():
 	# Changing the firing radius
 	range_shape.get_shape().radius = radius
-	print(tower_range.visible)
 	
 	# Creating a circle representing the towers range to display to the user
 	var circle: PoolVector2Array = range_ui.polygon

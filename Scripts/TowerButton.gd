@@ -21,17 +21,11 @@ func select():
 	Helpers.get_main_node().add_child(tower)
 	
 	# Connecting relevant signals from the tower to the tower button
-	var error := connect(Constants.TOWER_PLACEMENT_CANCELLED, tower, "_on_Tower_placement_cancelled")
-	if error != OK:
-		print("Error {", error, "} connecting signal: ", Constants.TOWER_PLACEMENT_CANCELLED)
+	Helpers.call_error_function(self, "connect", [Constants.TOWER_PLACEMENT_CANCELLED, tower, "_on_Tower_placement_cancelled"])
 	
-	error = tower.connect(Constants.TOWER_PLACEMENT_CONFIRMED, self, "_on_Tower_placement_confirmed")
-	if error != OK:
-		print("Error {", error, "} connecting signal: ", Constants.TOWER_PLACEMENT_CONFIRMED)
+	Helpers.call_error_function(tower, "connect", [Constants.TOWER_PLACEMENT_CONFIRMED, self, "_on_Tower_placement_confirmed"])
 	
-	error = tower.get_node("TowerControl").connect("gui_input", self, "_on_Tower_gui_input")
-	if error != OK:
-		print("Error {", error, "} connecting signal: ", "gui_input")
+	Helpers.call_error_function(tower.get_node("TowerControl"), "connect", ["gui_input", self, "_on_Tower_gui_input"])
 	
 	state = eTowerButton.SELECTED
 
