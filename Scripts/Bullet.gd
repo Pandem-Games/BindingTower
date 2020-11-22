@@ -1,14 +1,12 @@
 extends Area2D
 
-class_name Bullet
-
 # Constants
 
 # Signals
 
 # State
 enum eBullet { MOVE, FINISH }
-var state = eBullet.MOVE
+var state: int = eBullet.MOVE
 
 # Variables
 var target: WeakRef
@@ -16,28 +14,39 @@ export(float) var speed
 export(int) var damage
 
 # Functions
-func move(delta):
+
+# Moves the bullet towards the target
+func move(delta: float):
+	# Tries to get target location and move towards it
 	if target.get_ref():
-		var direction = global_position.direction_to(target.get_ref().global_position)
+		var direction: Vector2 = global_position.direction_to(target.get_ref().global_position)
 		translate(direction * speed * delta)
 	else:
 		queue_free()
-	
+
+# Called when the bullet is finished
 func finish():
 	$Area/Sprite.visible = false
 	state = eBullet.FINISH
-	
-func init(target):
-	self.target = target
+	queue_free()
+
+# Initializer for the class
+func init(t: WeakRef):
+	self.target = t
 	state = eBullet.MOVE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta: float):
 	match state:
 		eBullet.MOVE:
 			move(delta)
 
-func _on_Bullet_area_entered(area):
-	if area.get_parent() is Enemy:
-		area.get_parent().call_deferred("hit", self)
+# Signal called when the bullet enters an enemy
+func _on_Bullet_area_entered(area: Area2D):
+	var target_value: Node2D = target.get_ref()
+	if target_value:
+		if area.get_parent() == target_value:
+			target_value.call_deferred("hit", self)
+			finish()
+	else:
 		finish()

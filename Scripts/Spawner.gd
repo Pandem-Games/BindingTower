@@ -5,12 +5,9 @@ const NUM_ENEMIES = 5
 const POINT_VARIATION = 10.0
 const MAX_DELAY = 5.0
 
-# Signals
-signal enemy_spawned
-
 # State
 enum eSpawner {SPAWN, WAIT, FINISH}
-var state = eSpawner.SPAWN
+var state: int = eSpawner.SPAWN
 
 # Variables
 export(PackedScene) var enemy_resource
@@ -22,27 +19,34 @@ var curve: Curve2D
 # Functions
 func _ready():
 	$MainPath.curve = curve
-	for i in range(NUM_ENEMIES):
-		var curve = $MainPath.curve.duplicate()
-
-		for j in curve.get_point_count():
-			var p = curve.get_point_position(j)
-			var x = p.x + RN.G.randf_range(-POINT_VARIATION, POINT_VARIATION)
-			var y = p.y + RN.G.randf_range(-POINT_VARIATION, POINT_VARIATION)
-			var position = Vector2(x, y)
-			curve.set_point_position(j, position)
+	for _i in range(NUM_ENEMIES):
+		# Duplicate curve so that the curve can be given to each enemy
+		var curve_dup: Curve2D = $MainPath.curve.duplicate()
 		
-		var e = enemy_resource.instance()
-		e.init(curve)
-		enemies.append(e)
-		var enemy = e.get_node("Path/Follow")
-		enemy.connect(Constants.ENEMY_FINISHED, self, "_on_Enemy_finished")
+		# Loop through each point and randomize it's position slightly
+		for j in curve_dup.get_point_count():
+			var p := curve_dup.get_point_position(j)
+			var x: float = p.x + RN.G.randf_range(-POINT_VARIATION, POINT_VARIATION)
+			var y: float = p.y + RN.G.randf_range(-POINT_VARIATION, POINT_VARIATION)
+			var position := Vector2(x, y)
+			curve_dup.set_point_position(j, position)
+		
+		# Create the enemy
+		var enemy_path: Node2D = enemy_resource.instance()
+		enemy_path.init(curve_dup)
+		enemies.append(enemy_path)
+		var enemy: Node2D = enemy_path.get_node("Path/Enemy")
+		
+		Helpers.call_error_function(enemy, "connect", [Constants.ENEMY_KILLED, self, "_on_Enemy_killed"])
+			
 		delays.append((RN.G.randf() * MAX_DELAY) as float)
 
 	elapsedTime = 0.0
 	state = eSpawner.SPAWN
 
-func spawn(delta):
+# Spawns enemies who's timers have elapsed
+func spawn(delta: float):
+	# Increment the timer and if the delay time has been reached then spawn the enemy
 	elapsedTime += delta
 	for i in range(delays.size()):
 		if (delays[i] as float) != -1.0 && elapsedTime >= (delays[i] as float):
@@ -59,16 +63,18 @@ func wait():
 func finish():
 	pass
 
-func init(c):
+# Initializes the class
+func init(c: Curve2D):
 	self.curve = c
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. 'delta' is the elapsed time since the previous frame
+func _process(delta: float):
 	match state:
 		eSpawner.SPAWN:
 			spawn(delta)
 		eSpawner.WAIT:
 			wait()
 
-func _on_Enemy_finished():
+# Signal function ran when an enemy reaches the end of the path
+func _on_Enemy_killed():
 	print("Enemy finished path")

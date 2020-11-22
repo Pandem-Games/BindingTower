@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Map.gd" type="Script" id=1]
-[ext_resource path="res://Nodes/Tower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/Towers/WeakTower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Nodes/Spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assests/Images/Background.png" type="Texture" id=4]
-
+[ext_resource path="res://Nodes/TowerUI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -27,3 +27,18 @@ __meta__ = {
 
 [node name="Path" type="Path2D" parent="Background"]
 curve = SubResource( 1 )
+
+[node name="TowerMask" type="Area2D" parent="Background/Path"]
+collision_layer = 8
+
+[node name="MaskingArea" type="CollisionPolygon2D" parent="Background/Path/TowerMask"]
+position = Vector2( 130.97, 449.303 )
+scale = Vector2( 1.50185, 0.691505 )
+polygon = PoolVector2Array( -135.661, -378.818, 644.056, -378.61, 644.247, 24.5419, -27.1479, 25.2463, -27.0822, 245.769, 800.169, 246.884, 800.169, 340.241, -68.8518, 337.463, -69.043, -66.4848, 602.051, -66.2872, 601.806, -286.8, -135.217, -286.98 )
+
+[node name="UI" type="Node2D" parent="."]
+z_index = 4096
+
+[node name="MainUIMargin" parent="UI" instance=ExtResource( 6 )]
+margin_right = 1280.0
+margin_bottom = 720.0

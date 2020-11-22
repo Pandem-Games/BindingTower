@@ -10,5 +10,5 @@ func _ready():
 	speed = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta: float):
 	set_offset(get_offset() + speed)

@@ -4,7 +4,8 @@ extends Node
 const presetSeed = 12344
 
 # Variables
-var G = RandomNumberGenerator.new()
+var G := RandomNumberGenerator.new()
 
+# Functions
 func _init():
 	G.seed = presetSeed
