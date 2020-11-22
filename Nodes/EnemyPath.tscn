@@ -14,6 +14,7 @@ _data = {
 extents = Vector2( 15.9386, 15.9153 )
 
 [node name="EnemyPath" type="Node2D"]
+z_index = 1
 script = ExtResource( 1 )
 
 [node name="Path" type="Path2D" parent="."]

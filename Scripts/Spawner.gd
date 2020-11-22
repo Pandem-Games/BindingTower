@@ -5,12 +5,9 @@ const NUM_ENEMIES = 5
 const POINT_VARIATION = 10.0
 const MAX_DELAY = 5.0
 
-# Signals
-signal enemy_spawned
-
 # State
 enum eSpawner {SPAWN, WAIT, FINISH}
-var state = eSpawner.SPAWN
+var state: int = eSpawner.SPAWN
 
 # Variables
 export(PackedScene) var enemy_resource
@@ -24,30 +21,31 @@ func _ready():
 	$MainPath.curve = curve
 	for _i in range(NUM_ENEMIES):
 		# Duplicate curve so that the curve can be given to each enemy
-		var curve_dup = $MainPath.curve.duplicate()
+		var curve_dup: Curve2D = $MainPath.curve.duplicate()
 		
 		# Loop through each point and randomize it's position slightly
 		for j in curve_dup.get_point_count():
-			var p = curve_dup.get_point_position(j)
-			var x = p.x + RN.G.randf_range(-POINT_VARIATION, POINT_VARIATION)
-			var y = p.y + RN.G.randf_range(-POINT_VARIATION, POINT_VARIATION)
-			var position = Vector2(x, y)
+			var p := curve_dup.get_point_position(j)
+			var x: float = p.x + RN.G.randf_range(-POINT_VARIATION, POINT_VARIATION)
+			var y: float = p.y + RN.G.randf_range(-POINT_VARIATION, POINT_VARIATION)
+			var position := Vector2(x, y)
 			curve_dup.set_point_position(j, position)
 		
 		# Create the enemy
-		var e = enemy_resource.instance()
-		e.init(curve_dup)
-		enemies.append(e)
-		var enemy = e.get_node("Path/Enemy")
-		# TODO: Send this in as a parameter to enemies...
-		enemy.connect(Constants.ENEMY_KILLED, self, "_on_Enemy_killed")
+		var enemy_path: Node2D = enemy_resource.instance()
+		enemy_path.init(curve_dup)
+		enemies.append(enemy_path)
+		var enemy: Node2D = enemy_path.get_node("Path/Enemy")
+		
+		Helpers.call_error_function(enemy, "connect", [Constants.ENEMY_KILLED, self, "_on_Enemy_killed"])
+			
 		delays.append((RN.G.randf() * MAX_DELAY) as float)
 
 	elapsedTime = 0.0
 	state = eSpawner.SPAWN
 
 # Spawns enemies who's timers have elapsed
-func spawn(delta):
+func spawn(delta: float):
 	# Increment the timer and if the delay time has been reached then spawn the enemy
 	elapsedTime += delta
 	for i in range(delays.size()):
@@ -66,11 +64,11 @@ func finish():
 	pass
 
 # Initializes the class
-func init(c):
+func init(c: Curve2D):
 	self.curve = c
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame
-func _process(delta):
+func _process(delta: float):
 	match state:
 		eSpawner.SPAWN:
 			spawn(delta)

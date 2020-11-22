@@ -10,7 +10,6 @@ var state = eContinue.FINISHED
 # var a = 2
 # var b = "text"
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MarginContainer/HBoxContainer/Menu/btn_continue.connect("pressed", self, "Continue")
