@@ -125,9 +125,14 @@ func Fullscreen(item):
 
 func volume_slider_changed(value, slider_name):
 	Settings.set_volume(value, slider_name)
+	get_node("VBoxContainer/Audio/lab_" + slider_name + "_number").set_text(str(value))
+
 
 
 func set_volume():
+	volume_slider_changed(Settings.settings["Master_Volume"], "Master")
+	volume_slider_changed(Settings.settings["Music_Volume"], "Music")
+	volume_slider_changed(Settings.settings["Effects_Volume"], "Effects")
 	$VBoxContainer/Audio/master_volume_slider.value = float(Settings.settings["Master_Volume"])
 	$VBoxContainer/Audio/music_volume_slider.value = float(Settings.settings["Music_Volume"])
 	$VBoxContainer/Audio/effects_volume_slider.value = float(Settings.settings["Effects_Volume"])
