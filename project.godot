@@ -21,8 +21,8 @@ config/icon="res://Assests/Images/icon.png"
 
 [autoload]
 
-Constants="*res://Scripts/Constants.gd"
-RN="*res://Scripts/RNG.gd"
+Constants="*res://Globals/Constants.gd"
+RN="*res://Globals/RNG.gd"
 Helpers="*res://Globals/Helpers.gd"
 Settings="*res://Globals/Settings.tscn"
 

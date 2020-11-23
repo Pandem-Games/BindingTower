@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assests/Font/yoster.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assests/Font/saved_styles/TitleText.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assests/Images/hope_jacob_doesnt_notice.png" type="Texture" id=3]
-[ext_resource path="res://Assests/Images/title.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/TitleScreen.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -41,18 +40,6 @@ margin_right = 360.5
 margin_bottom = 96.0
 custom_fonts/font = SubResource( 1 )
 text = "Binding Tower"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="logo" type="TextureRect" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -268.5
-margin_right = 268.5
-margin_bottom = 129.0
-texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

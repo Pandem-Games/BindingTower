@@ -2,7 +2,7 @@ extends Control
 
 
 var all_options = {
-	"Resolution" : {
+	"resolution" : {
 		"1920 x 1080" : {
 			"width" : 1920,
 			"height" : 1080
@@ -56,23 +56,21 @@ var all_options = {
 			"height" : 600
 		}
 	},
-#	"Fullscreen" : {
-#		"fullscreen" : "fullscreen",
-#		"windowed" : "windowed",
-#		"boarderless" : "boarderless"
-#	}
-
+	"toggle_ignore_sig" : false
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Call this to hid ethe other options and just display video options
 	Video()
-
-	for i in all_options:
-		call(i, all_options[i])
-
-	set_volume()
+	
+	set_resolution_btn(all_options["resolution"])
+#	for i in all_options:
+		#call("set_" + i + "_btn", all_options[i])
+	
+	set_volume_slider()
+	set_borderless_fullscreen_btn()
+	set_fullscreen_btn()
 
 
 func Video():
@@ -97,30 +95,20 @@ func Back():
 	get_tree().change_scene("res://Nodes/Scenes/Menu/TitleScreen.tscn")
 
 
-func Resolution(item):
+func set_resolution_btn(item):
 	var counter = 0
-
+	
 	for i in item:
 		$VBoxContainer/Video/btn_resolution.add_item(i, counter)
-
-		if Settings.settings["res_width"] == all_options["Resolution"][i]["width"] and Settings.settings["res_height"] == all_options["Resolution"][i]["height"]:
+		if Settings.settings["res_width"] == all_options["resolution"][i]["width"] and Settings.settings["res_height"] == all_options["resolution"][i]["height"]:
 			$VBoxContainer/Video/btn_resolution.selected = counter
-
 		counter += 1
 
 
 func resolution_selected(item_id):
-	var key = all_options["Resolution"].keys()[item_id]
-	Settings.set_resolution(all_options["Resolution"][key]["width"], all_options["Resolution"][key]["height"])
+	var key = all_options["resolution"].keys()[item_id]
+	Settings.set_resolution(all_options["resolution"][key]["width"], all_options["resolution"][key]["height"])
 	Settings.save_game()
-
-
-func Fullscreen(item):
-	var counter = 0
-
-	for i in item:
-		$VBoxContainer/Video/btn_fullscreen.add_item(i, counter)
-		counter += 1
 
 
 func volume_slider_changed(value, slider_name):
@@ -128,11 +116,65 @@ func volume_slider_changed(value, slider_name):
 	get_node("VBoxContainer/Audio/lab_" + slider_name + "_number").set_text(str(value))
 
 
-
-func set_volume():
+func set_volume_slider():
+	# Updates the number at the end of the slider
 	volume_slider_changed(Settings.settings["Master_Volume"], "Master")
 	volume_slider_changed(Settings.settings["Music_Volume"], "Music")
 	volume_slider_changed(Settings.settings["Effects_Volume"], "Effects")
+	
+	# Sets the slider value
 	$VBoxContainer/Audio/master_volume_slider.value = float(Settings.settings["Master_Volume"])
 	$VBoxContainer/Audio/music_volume_slider.value = float(Settings.settings["Music_Volume"])
 	$VBoxContainer/Audio/effects_volume_slider.value = float(Settings.settings["Effects_Volume"])
+
+
+func set_fullscreen_btn():
+	if Settings.settings["borderless"] == false:
+		if Settings.settings["fullscreen"] == true:
+			all_options["toggle_ignore_sig"] = true
+			$VBoxContainer/Video/btn_fullscreen.set_pressed(true)
+#			all_options["toggle_fullscreen"] = true
+
+
+func set_borderless_fullscreen_btn():
+	if Settings.settings["borderless"] == true and Settings.settings["fullscreen"] == true:
+		all_options["toggle_ignore_sig"] = true
+		$VBoxContainer/Video/btn_borderless_fullscreen.set_pressed(true)
+#		all_options["toggle_borderless_fullscreen"] = true
+
+
+func fullscreen_selected(value):
+	if all_options["toggle_ignore_sig"] == true:
+		all_options["toggle_ignore_sig"] = false
+		return
+	
+	all_options["toggle_ignore_sig"] = true
+	$VBoxContainer/Video/btn_borderless_fullscreen.set_pressed(false)
+	
+	Settings.set_borderless(false)
+	Settings.set_fullscreen(value)
+	all_options["toggle_ignore_sig"] = false
+
+#	print("fullscreen: ")
+#	print(str(value))
+#	print("f = " + str(Settings.settings["fullscreen"]) )
+#	print("b = " + str(Settings.settings["borderless"]) )
+
+
+func borderless_fullscreen_selected(value):
+	if all_options["toggle_ignore_sig"] == true:
+		all_options["toggle_ignore_sig"] = false
+		return
+	
+	all_options["toggle_ignore_sig"] = true
+	$VBoxContainer/Video/btn_fullscreen.set_pressed(false)
+	
+	Settings.set_borderless(value)
+	Settings.set_fullscreen(value)
+	all_options["toggle_ignore_sig"] = false
+
+
+#	print("borderless: ")
+#	print(str(value))
+#	print("f = " + str(Settings.settings["fullscreen"]) )
+#	print("b = " + str(Settings.settings["borderless"]) )

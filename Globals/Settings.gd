@@ -38,8 +38,8 @@ var settings = {
 
 	#Scan Codes - keyboard inputs that are binded to an action
 	"scan_codes" : {
-		"kb_use" : 32, #space bar
-		"kb_pause" : 16777217 #escape
+		"use" : 32, #space bar
+		"pause" : 16777217 #escape
 	}
 }
 
@@ -68,8 +68,10 @@ func _ready():
 	set_resolution(settings["res_width"], settings["res_height"])
 
 # If user wants to change the input for an action
-#func _input(kb_change):
-#	pass
+#func _input(action, kb_change):
+#	InputMap.action_erase_events(action)
+#	InputMap.action_add_event(action, kb_change)
+#	settings["scan_codes"][action] = kb_change
 
 # This function is called every frame so probably don't use it
 #func _process(delta):
@@ -78,7 +80,7 @@ func _ready():
 # If aditional settings are added then make update_settings 1 and it will add to the default setting
 func update_settings():
 	var save_file = File.new()
-	
+
 	if(not save_file.file_exists(SAVE_PATH)):
 		return
 	
@@ -157,8 +159,8 @@ func set_fullscreen(value):
 
 func set_borderless(value):
 	settings["borderless"] = value
-#	OS.set_borderless_window(value)
-	OS.borderless = value
+	OS.set_borderless_window(value)
+	
 	save_game()
 
 # Save option variables
@@ -182,3 +184,5 @@ func load_game():
 	set_volume(settings["Master_Volume"], "Master")
 	set_volume(settings["Music_Volume"], "Music")
 	set_volume(settings["Effects_Volume"], "Effects")
+	set_fullscreen(settings["fullscreen"])
+	set_borderless(settings["borderless"])
