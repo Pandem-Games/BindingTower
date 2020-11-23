@@ -5,3 +5,8 @@ A tower defense game that implements RNG to make different maps. Different items
 
 ## Pixel Fonts to check out
 https://www.1001fonts.com/pixel+video-game-fonts.html?page=1&items=10
+
+
+### Creators
+Jacob VanDomelen
+Trevor Spear
