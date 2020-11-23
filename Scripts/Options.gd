@@ -65,6 +65,8 @@ func _ready():
 	Video()
 	
 	set_resolution_btn(all_options["resolution"])
+	
+	# call() can call a function by using a string
 #	for i in all_options:
 		#call("set_" + i + "_btn", all_options[i])
 	
@@ -153,12 +155,8 @@ func fullscreen_selected(value):
 	
 	Settings.set_borderless(false)
 	Settings.set_fullscreen(value)
+	
 	all_options["toggle_ignore_sig"] = false
-
-#	print("fullscreen: ")
-#	print(str(value))
-#	print("f = " + str(Settings.settings["fullscreen"]) )
-#	print("b = " + str(Settings.settings["borderless"]) )
 
 
 func borderless_fullscreen_selected(value):
@@ -171,10 +169,5 @@ func borderless_fullscreen_selected(value):
 	
 	Settings.set_borderless(value)
 	Settings.set_fullscreen(value)
+	
 	all_options["toggle_ignore_sig"] = false
-
-
-#	print("borderless: ")
-#	print(str(value))
-#	print("f = " + str(Settings.settings["fullscreen"]) )
-#	print("b = " + str(Settings.settings["borderless"]) )
