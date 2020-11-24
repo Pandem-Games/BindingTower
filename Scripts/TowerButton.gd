@@ -22,9 +22,7 @@ func select():
 	
 	# Connecting relevant signals from the tower to the tower button
 	Helpers.call_error_function(self, "connect", [Constants.TOWER_PLACEMENT_CANCELLED, tower, "_on_Tower_placement_cancelled"])
-	
 	Helpers.call_error_function(tower, "connect", [Constants.TOWER_PLACEMENT_CONFIRMED, self, "_on_Tower_placement_confirmed"])
-	
 	Helpers.call_error_function(tower.get_node("TowerControl"), "connect", ["gui_input", self, "_on_Tower_gui_input"])
 	
 	state = eTowerButton.SELECTED
@@ -33,8 +31,6 @@ func select():
 func _on_Tower_gui_input(event: InputEvent):
 	# This event is also raised by the tower when the user clicks so we have to 
 	# check that the user is clicking on the tower button
-	print(str(event.is_action_pressed("ui_select")))
-	print(str(get_rect().has_point(get_local_mouse_position())))
 	if event.is_action_pressed("ui_select") and get_rect().has_point(get_local_mouse_position()):
 		match state:
 			# The user is clicking on the tower button, initiating the selection

@@ -6,9 +6,9 @@ var state = eButton.FINISHED
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.connect("mouse_entered", self, "change_color_state", [eButton, eButton.ONHOVER])
-	self.connect("mouse_exited", self, "change_color_state", [eButton, eButton.FINISHED])
-	pass
+	Helpers.call_error_function(self, "connect", ["mouse_entered", self, "change_color_state", [eButton, eButton.ONHOVER]])
+	Helpers.call_error_function(self, "connect", ["mouse_exited", self, "change_color_state", [eButton, eButton.FINISHED]])
+
 
 func change_color_state(state_given, changed_state):
 	#print(state_given)
@@ -20,8 +20,6 @@ func change_color_state(state_given, changed_state):
 		state_given.FINISHED:
 			# return color back to normal
 			pass
-	
-	pass
 
 func change_state():
 	pass

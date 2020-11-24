@@ -1,24 +1,14 @@
 extends Control
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
+# Functions
 func Continue():
-	get_tree().change_scene("res://Nodes/Scenes/Test.tscn")
-	pass
-
+	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Test.tscn"])
 
 func NewGame():
 	Continue()
 
-
 func Options():
-	get_tree().change_scene("res://Nodes/Scenes/Options.tscn")
-	pass
-
+	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Options.tscn"])
 
 func Quit():
 	get_tree().quit()
-	pass

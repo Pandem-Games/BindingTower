@@ -1,8 +1,5 @@
 extends PathFollow2D
 
-# Constants
-const speed = 100.0
-
 # Signals
 signal enemy_spawned
 signal enemy_killed
@@ -12,7 +9,8 @@ enum eEnemy {MOVE, FINISH}
 var state: int = eEnemy.MOVE
 
 # Variables
-export(int) var max_health
+export(int) var max_health = 100
+export(int) var speed = 100
 export(PackedScene) var damage_number_resource
 onready var sprite := $Area/Collision/Sprite
 var health: int
@@ -21,7 +19,7 @@ var health: int
 func move(delta: float):
 	sprite.visible = true
 	offset += speed * delta
-	if unit_offset >= 1.0:
+	if unit_offset >= 1.00:
 		finish()
 
 # Calculates a hit from a bullet
@@ -51,6 +49,7 @@ func _ready():
 	health = max_health
 	add_to_group(Constants.ENEMIES)
 	state = eEnemy.MOVE
+	loop = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
