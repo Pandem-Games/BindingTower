@@ -60,8 +60,8 @@ func _ready():
 	
 	# If we update the game I wanted some method to not overwrite the information already there.
 	# So this should change update the information.
-	if update_settings_check == 1:
-		update_settings()
+#	if update_settings_check == 1:
+#		update_settings()
 	
 	load_game()
 	choose_music()
@@ -113,8 +113,8 @@ func choosen_music(music_array):
 	#loads in songs
 	settings["song"] = load(music_array[settings["new_choice"]])
 	
-	($music as AudioStreamPlayer2D).set_stream(settings["song"])
-	($music as AudioStreamPlayer2D).play()
+	$music.set_stream(settings["song"])
+	$music.play()
 
 
 func set_volume(volume_value, volume_name):

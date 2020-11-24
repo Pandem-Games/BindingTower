@@ -34,7 +34,7 @@ func _ready():
 			curve_dup.set_point_position(j, position)
 		
 		# Create the enemy
-		var enemy_path: EnemyPath = enemy_resource.instance()
+		var enemy_path: Node2D = enemy_resource.instance()
 		enemy_path.init(curve_dup)
 		enemies.append(enemy_path)
 		var enemy: Node2D = enemy_path.get_node("Path/Enemy")

@@ -1,61 +1,33 @@
 extends Control
 
+class Resolution:
+	var width: int
+	var height: int
+
+	func _init(w, h):
+		width = w
+		height = h
+
+	func to_string():
+		return (width as String) + " x " + (height as String)
+
 
 var all_options = {
-	"resolution" : {
-		"1920 x 1080" : {
-			"width" : 1920,
-			"height" : 1080
-		},
-		"1680 x 1050" : {
-			"width" : 1680,
-			"height" : 1050
-		},
-		"1600 x 900" : {
-			"width" : 1600,
-			"height" : 900
-		},
-		"1536 x 864" : {
-			"width" : 1536,
-			"height" : 864
-		},
-		"1440 x 1080" : {
-			"width" : 1440,
-			"height" : 1080
-		},
-		"1400 x 1050" : {
-			"width" : 1400,
-			"height" : 1050
-		},
-		"1366 x 768" : {
-			"width" : 1366,
-			"height" : 768
-		},
-		"1280 x 960" : {
-			"width" : 1280,
-			"height" : 960
-		},
-		"1280 x 720" : {
-			"width" : 1280,
-			"height" : 720
-		},
-		"1024 x 768" : {
-			"width" : 1024,
-			"height" : 768
-		},
-		"1024 x 640" : {
-			"width" : 1024,
-			"height" : 640
-		},
-		"1014 x 576" : {
-			"width" : 1014,
-			"height" : 576
-		},
-		"800 x 600" : {
-			"width" : 800,
-			"height" : 600
-		}
-	},
+	"resolution" : [
+		Resolution.new(1920, 1080),
+		Resolution.new(1680, 1050),
+		Resolution.new(1600, 900),
+		Resolution.new(1536, 864),
+		Resolution.new(1440, 1080),
+		Resolution.new(1400, 1050),
+		Resolution.new(1366, 768),
+		Resolution.new(1280, 960),
+		Resolution.new(1280, 720),
+		Resolution.new(1024, 768),
+		Resolution.new(1024, 640),
+		Resolution.new(1014, 576),
+		Resolution.new(800, 600)
+	],
 	"toggle_ignore_sig" : false
 }
 
@@ -77,7 +49,7 @@ func _ready():
 	# Call this to hide the other options and just display video options
 	video()
 	
-	# Setters
+	# Button Setters
 	set_resolution_btn(all_options["resolution"])
 	set_volume_slider()
 	set_borderless_fullscreen_btn()
@@ -106,19 +78,19 @@ func back():
 	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Menu/TitleScreen.tscn"])
 
 
-func set_resolution_btn(item: Dictionary):
+func set_resolution_btn(item: Array):
 	var counter = 0
 	
 	for i in item:
-		resolution_options.add_item(i, counter)
-		if Settings.settings["res_width"] == all_options["resolution"][i]["width"] and Settings.settings["res_height"] == all_options["resolution"][i]["height"]:
+		resolution_options.add_item(i.to_string(), counter)
+		if Settings.settings["res_width"] == i.width and Settings.settings["res_height"] == i.height:
 			resolution_options.selected = counter
 		counter += 1
 
 
 func resolution_selected(item_id):
-	var key = all_options["resolution"].keys()[item_id]
-	Settings.set_resolution(all_options["resolution"][key]["width"], all_options["resolution"][key]["height"])
+	var resolution = all_options["resolution"][item_id]
+	Settings.set_resolution(resolution.width, resolution.height)
 	Settings.save_game()
 
 
