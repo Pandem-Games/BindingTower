@@ -1,7 +1,5 @@
 extends Node2D
 
-class_name EnemyPath
-
 # Variables
 var curve: Curve2D
 

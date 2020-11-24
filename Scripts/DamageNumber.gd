@@ -1,7 +1,5 @@
 extends Node2D
 
-class_name DamageNumber
-
 # Variables
 onready var label := $DamageNumber
 var text: String

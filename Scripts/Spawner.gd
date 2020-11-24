@@ -1,7 +1,5 @@
 extends Node2D
 
-class_name Spawner
-
 # Constants
 const NUM_ENEMIES = 5
 const POINT_VARIATION = 10.0
