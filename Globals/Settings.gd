@@ -73,10 +73,6 @@ func _ready():
 #	InputMap.action_add_event(action, kb_change)
 #	settings["scan_codes"][action] = kb_change
 
-# This function is called every frame so probably don't use it
-#func _process(delta):
-#	pass
-
 # If aditional settings are added then make update_settings 1 and it will add to the default setting
 func update_settings():
 	var save_file = File.new()
