@@ -88,6 +88,7 @@ func update_settings():
 
 
 func setting_check(old_setting):
+	# TODO: Make sure new settings are the basis for the schema
 	for index in settings:
 		if !old_setting.has(index):
 			old_setting[index] = settings[index]
@@ -96,11 +97,10 @@ func setting_check(old_setting):
 
 # Choose the music to play
 func choose_music():
-	match settings["menu"]:
-		true:
-			choosen_music(menu_music)
-		false:
-			choosen_music(game_music)
+	if settings["menu"]:
+		choosen_music(menu_music)
+	else:
+		choosen_music(game_music)
 
 # Play and set variables to play just menu music
 func choosen_music(music_array):
@@ -114,7 +114,7 @@ func choosen_music(music_array):
 	settings["song"] = load(music_array[settings["new_choice"]])
 	
 	$music.set_stream(settings["song"])
-	$music.play(0.0)
+	$music.play()
 
 
 func set_volume(volume_value, volume_name):
