@@ -5,6 +5,9 @@ const NUM_ENEMIES = 5
 const POINT_VARIATION = 10.0
 const MAX_DELAY = 5.0
 
+# Signals
+signal enemy_spawned
+
 # State
 enum eSpawner {SPAWN, WAIT, FINISH}
 var state: int = eSpawner.SPAWN
@@ -52,7 +55,7 @@ func spawn(delta: float):
 		if (delays[i] as float) != -1.0 && elapsedTime >= (delays[i] as float):
 			self.add_child(enemies[i])
 			delays[i] = -1
-			emit_signal(Constants.ENEMY_SPAWNED, enemies[i].get_node("Path/Follow"))
+			emit_signal(Constants.ENEMY_SPAWNED, enemies[i].get_node("Path/Enemy"))
 
 	if elapsedTime >= delays.max():
 		state = eSpawner.WAIT

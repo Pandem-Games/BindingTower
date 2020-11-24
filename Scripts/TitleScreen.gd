@@ -6,7 +6,7 @@ func _ready():
 
 
 func Continue():
-	get_tree().change_scene("res://Nodes/Scenes/Test.tscn")
+	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Test.tscn"])
 	pass
 
 
@@ -15,7 +15,7 @@ func NewGame():
 
 
 func Options():
-	get_tree().change_scene("res://Nodes/Scenes/Options.tscn")
+	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Options.tscn"])
 	pass
 
 

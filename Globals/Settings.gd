@@ -117,8 +117,8 @@ func choosen_music(music_array):
 	#loads in songs
 	settings["song"] = load(music_array[settings["new_choice"]])
 	
-	$music.set_stream(settings["song"])
-	$music.play(0.0)
+	($music as AudioStreamPlayer2D).set_stream(settings["song"])
+	($music as AudioStreamPlayer2D).play()
 
 
 func set_volume(volume_value, volume_name):
