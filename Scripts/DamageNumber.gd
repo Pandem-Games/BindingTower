@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name DamageNumber
+
 # Variables
 onready var label := $DamageNumber
 var text: String
@@ -15,7 +17,7 @@ func _on_Timer_timeout():
 func init(damage, global_position):
 	text = str(damage)
 	label_position = global_position
-	
+
 func _ready():
 	label.text = text
 	label.rect_position = label_position

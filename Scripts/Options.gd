@@ -74,43 +74,39 @@ onready var effects_volume: Control = $VBoxContainer/Audio/effects_volume_slider
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Call this to hid ethe other options and just display video options
-	Video()
+	# Call this to hide the other options and just display video options
+	video()
 	
+	# Setters
 	set_resolution_btn(all_options["resolution"])
-	
-	# call() can call a function by using a string
-#	for i in all_options:
-		#call("set_" + i + "_btn", all_options[i])
-	
 	set_volume_slider()
 	set_borderless_fullscreen_btn()
 	set_fullscreen_btn()
 
 
-func Video():
+func video():
 	video_tab.set_visible(true);
 	audio_tab.set_visible(false);
 	controls_tab.set_visible(false);
 
 
-func Audio():
+func audio():
 	video_tab.set_visible(false);
 	audio_tab.set_visible(true);
 	controls_tab.set_visible(false);
 
 
-func Controls():
+func controls():
 	video_tab.set_visible(false);
 	audio_tab.set_visible(false);
 	controls_tab.set_visible(true);
 
 
-func Back():
+func back():
 	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Menu/TitleScreen.tscn"])
 
 
-func set_resolution_btn(item):
+func set_resolution_btn(item: Dictionary):
 	var counter = 0
 	
 	for i in item:
@@ -148,14 +144,12 @@ func set_fullscreen_btn():
 		if Settings.settings["fullscreen"] == true:
 			all_options["toggle_ignore_sig"] = true
 			fullscreen_toggle.set_pressed(true)
-#			all_options["toggle_fullscreen"] = true
 
 
 func set_borderless_fullscreen_btn():
 	if Settings.settings["borderless"] == true and Settings.settings["fullscreen"] == true:
 		all_options["toggle_ignore_sig"] = true
 		borderless_fullscreen_toggle.set_pressed(true)
-#		all_options["toggle_borderless_fullscreen"] = true
 
 
 func fullscreen_selected(value):

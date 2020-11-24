@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Map.gd" type="Script" id=1]
-[ext_resource path="res://Nodes/Towers/WeakTower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Nodes/Spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assests/Images/Background.png" type="Texture" id=4]
-[ext_resource path="res://Nodes/TowerUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Nodes/Towers/TowerUI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -14,7 +13,6 @@ _data = {
 [node name="Main" type="Node2D"]
 scale = Vector2( 1.49985, 1.49994 )
 script = ExtResource( 1 )
-tower_resource = ExtResource( 2 )
 spawner_resource = ExtResource( 3 )
 
 [node name="Background" type="Sprite" parent="."]
@@ -29,6 +27,7 @@ __meta__ = {
 curve = SubResource( 1 )
 
 [node name="TowerMask" type="Area2D" parent="Background/Path"]
+visible = false
 collision_layer = 8
 
 [node name="MaskingArea" type="CollisionPolygon2D" parent="Background/Path/TowerMask"]
