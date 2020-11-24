@@ -9,7 +9,7 @@
 size = 96
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -76,7 +76,7 @@ margin_top = 17.0
 margin_right = 244.0
 margin_bottom = 71.0
 size_flags_horizontal = 0
-custom_styles/focus = SubResource( 7 )
+custom_styles/focus = SubResource( 2 )
 custom_fonts/font = ExtResource( 2 )
 text = "Continue"
 flat = true

@@ -78,7 +78,7 @@ func back():
 	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Menu/TitleScreen.tscn"])
 
 
-func set_resolution_btn(item: Dictionary):
+func set_resolution_btn(item: Array):
 	var counter = 0
 	
 	for i in item:
