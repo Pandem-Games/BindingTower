@@ -6,9 +6,7 @@ signal tower_placement_confirmed
 # State
 enum eTower {SELECTING, RESTRICTED, COOLDOWN, WAIT, FINISH}
 var state: int = eTower.WAIT
-var enemies := []
-var restricted_areas := []
-var elapsed_time := 0.0
+
 
 # Variables
 export(float) var radius
@@ -16,10 +14,11 @@ export(float) var cooldown_time
 export(int) var circle_vertices
 export(PackedScene) var bullet_resource
 export(Color) var restricted_color
-onready var tower_range := $Range
 onready var range_shape := $Range/Shape
 onready var range_ui := $RangeUI
-onready var tower_area := $Area
+var enemies := []
+var restricted_areas := []
+var elapsed_time := 0.0
 
 # Functions
 
@@ -37,7 +36,6 @@ func fire_at(enemy: WeakRef):
 
 # Waits for an enemy to get in range to fire at
 func wait():
-	# TODO: Change the waiting to use a timer instead
 	for enemy in enemies:
 		# Firing at enemy if they exist
 		if enemy.get_ref():

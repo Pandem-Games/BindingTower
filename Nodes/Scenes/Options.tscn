@@ -298,10 +298,10 @@ __meta__ = {
 margin_top = 463.0
 margin_right = 1680.0
 margin_bottom = 463.0
-[connection signal="pressed" from="btn_back" to="." method="Back"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_video" to="." method="Video"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_audio" to="." method="Audio"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_controls" to="." method="Controls"]
+[connection signal="pressed" from="btn_back" to="." method="back"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_video" to="." method="video"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_audio" to="." method="audio"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_controls" to="." method="controls"]
 [connection signal="item_selected" from="VBoxContainer/Video/btn_resolution" to="." method="resolution_selected"]
 [connection signal="toggled" from="VBoxContainer/Video/btn_fullscreen" to="." method="fullscreen_selected"]
 [connection signal="toggled" from="VBoxContainer/Video/btn_borderless_fullscreen" to="." method="borderless_fullscreen_selected"]

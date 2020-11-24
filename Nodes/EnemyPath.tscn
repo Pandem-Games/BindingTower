@@ -26,7 +26,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-max_health = 100
 damage_number_resource = ExtResource( 3 )
 
 [node name="Area" type="Area2D" parent="Path/Enemy"]

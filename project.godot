@@ -26,6 +26,12 @@ RN="*res://Globals/RNG.gd"
 Helpers="*res://Globals/Helpers.gd"
 Settings="*res://Globals/Settings.tscn"
 
+[debug]
+
+gdscript/warnings/unused_signal=false
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
+
 [display]
 
 window/size/width=1920

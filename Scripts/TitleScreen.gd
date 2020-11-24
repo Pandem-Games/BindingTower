@@ -1,13 +1,14 @@
 extends Control
 
+# Functions
 func Continue():
-	get_tree().change_scene("res://Nodes/Scenes/Test.tscn")
+	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Test.tscn"])
 
 func NewGame():
 	Continue()
 
 func Options():
-	get_tree().change_scene("res://Nodes/Scenes/Options.tscn")
+	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Options.tscn"])
 
 func Quit():
 	get_tree().quit()

@@ -73,10 +73,6 @@ func _ready():
 #	InputMap.action_add_event(action, kb_change)
 #	settings["scan_codes"][action] = kb_change
 
-# This function is called every frame so probably don't use it
-#func _process(delta):
-#	pass
-
 # If aditional settings are added then make update_settings 1 and it will add to the default setting
 func update_settings():
 	var save_file = File.new()
@@ -92,6 +88,7 @@ func update_settings():
 
 
 func setting_check(old_setting):
+	# TODO: Make sure new settings are the basis for the schema
 	for index in settings:
 		if !old_setting.has(index):
 			old_setting[index] = settings[index]
@@ -100,11 +97,10 @@ func setting_check(old_setting):
 
 # Choose the music to play
 func choose_music():
-	match settings["menu"]:
-		true:
-			choosen_music(menu_music)
-		false:
-			choosen_music(game_music)
+	if settings["menu"]:
+		choosen_music(menu_music)
+	else:
+		choosen_music(game_music)
 
 # Play and set variables to play just menu music
 func choosen_music(music_array):
@@ -117,8 +113,8 @@ func choosen_music(music_array):
 	#loads in songs
 	settings["song"] = load(music_array[settings["new_choice"]])
 	
-	$music.set_stream(settings["song"])
-	$music.play(0.0)
+	($music as AudioStreamPlayer2D).set_stream(settings["song"])
+	($music as AudioStreamPlayer2D).play()
 
 
 func set_volume(volume_value, volume_name):
