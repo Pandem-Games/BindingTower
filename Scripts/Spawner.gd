@@ -50,7 +50,7 @@ func spawn(delta: float):
 	# Increment the timer and if the delay time has been reached then spawn the enemy
 	# TODO: Implement Timers instead
 	elapsedTime += delta
-	for i in range(delays.size()):
+	for i in range(delays.size() - 1):
 		if delays[i] != -1.0 && elapsedTime >= delays[i]:
 			self.add_child(enemies[i])
 			delays[i] = -1

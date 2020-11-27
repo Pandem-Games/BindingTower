@@ -79,7 +79,7 @@ func _ready():
 	
 	# Creating a circle representing the towers range to display to the user
 	var circle: PoolVector2Array = range_ui.polygon
-	for i in range(0, circle_vertices):
+	for i in range(circle_vertices - 1):
 		circle.push_back(polar2cartesian(radius, i * (TAU / circle_vertices)))
 	range_ui.polygon = circle
 	
@@ -108,7 +108,7 @@ func _on_Range_area_entered(area: Area2D):
 
 # Signal function called when an enemy body leaves the towers area
 func _on_Range_area_exited(area: Area2D):
-	for i in range(0, enemies.size()):
+	for i in range(enemies.size() - 1):
 		# Removing the enemy reference when it exits the towers range
 		var enemy: Node2D = enemies[i].get_ref()
 		if enemy == area.get_parent():
@@ -123,7 +123,7 @@ func _on_Area_area_entered(area: Area2D):
 
 # Signal function called when tower leaves restricted placement area
 func _on_Area_area_exited(area: Area2D):
-	for i in range(0, restricted_areas.size()):
+	for i in range(restricted_areas.size() - 1):
 		# Removing the collision reference when it exits the towers area
 		var restricted_area: Area2D = restricted_areas[i].get_ref()
 		if restricted_area == area:
