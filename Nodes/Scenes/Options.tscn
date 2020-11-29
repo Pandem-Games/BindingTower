@@ -34,7 +34,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource( 3 )
 custom_styles/focus = SubResource( 1 )
-custom_fonts/font = ExtResource( 5 )
 text = "Back"
 align = 0
 __meta__ = {
@@ -66,9 +65,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_left = 345.0
-margin_right = 1334.0
-margin_bottom = 41.0
+margin_left = 380.0
+margin_right = 1300.0
+margin_bottom = 35.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 custom_constants/separation = 300
@@ -77,8 +76,8 @@ __meta__ = {
 }
 
 [node name="btn_video" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_right = 107.0
-margin_bottom = 41.0
+margin_right = 88.0
+margin_bottom = 35.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
@@ -86,9 +85,9 @@ text = "Video"
 align = 0
 
 [node name="btn_audio" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 407.0
-margin_right = 518.0
-margin_bottom = 41.0
+margin_left = 388.0
+margin_right = 480.0
+margin_bottom = 35.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
@@ -96,9 +95,9 @@ text = "Audio"
 align = 0
 
 [node name="btn_controls" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 818.0
-margin_right = 989.0
-margin_bottom = 41.0
+margin_left = 780.0
+margin_right = 920.0
+margin_bottom = 35.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 5 )
@@ -106,17 +105,17 @@ text = "Controls"
 align = 0
 
 [node name="Video" type="GridContainer" parent="VBoxContainer"]
-margin_top = 91.0
+margin_top = 85.0
 margin_right = 1680.0
-margin_bottom = 238.0
+margin_bottom = 214.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 40
 columns = 2
 
 [node name="lab_resolution" type="Label" parent="VBoxContainer/Video"]
 margin_top = 3.0
-margin_right = 486.0
-margin_bottom = 38.0
+margin_right = 391.0
+margin_bottom = 32.0
 custom_fonts/font = ExtResource( 5 )
 text = "Resolution:"
 __meta__ = {
@@ -124,9 +123,9 @@ __meta__ = {
 }
 
 [node name="btn_resolution" type="OptionButton" parent="VBoxContainer/Video"]
-margin_left = 526.0
-margin_right = 726.0
-margin_bottom = 41.0
+margin_left = 431.0
+margin_right = 631.0
+margin_bottom = 35.0
 rect_min_size = Vector2( 200, 0 )
 custom_fonts/font = ExtResource( 5 )
 __meta__ = {
@@ -134,9 +133,9 @@ __meta__ = {
 }
 
 [node name="lab_fullscreen" type="Label" parent="VBoxContainer/Video"]
-margin_top = 55.0
-margin_right = 486.0
-margin_bottom = 90.0
+margin_top = 49.0
+margin_right = 391.0
+margin_bottom = 78.0
 custom_fonts/font = ExtResource( 5 )
 text = "Fullscreen:"
 __meta__ = {
@@ -144,10 +143,10 @@ __meta__ = {
 }
 
 [node name="btn_fullscreen" type="CheckBox" parent="VBoxContainer/Video"]
-margin_left = 526.0
-margin_top = 51.0
-margin_right = 550.0
-margin_bottom = 94.0
+margin_left = 431.0
+margin_top = 45.0
+margin_right = 455.0
+margin_bottom = 82.0
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 5 )
 __meta__ = {
@@ -155,9 +154,9 @@ __meta__ = {
 }
 
 [node name="lab_borderless_fullscreen" type="Label" parent="VBoxContainer/Video"]
-margin_top = 108.0
-margin_right = 486.0
-margin_bottom = 143.0
+margin_top = 96.0
+margin_right = 391.0
+margin_bottom = 125.0
 custom_fonts/font = ExtResource( 5 )
 text = "Borderless and Fullscreen:"
 __meta__ = {
@@ -165,10 +164,10 @@ __meta__ = {
 }
 
 [node name="btn_borderless_fullscreen" type="CheckBox" parent="VBoxContainer/Video"]
-margin_left = 526.0
-margin_top = 104.0
-margin_right = 550.0
-margin_bottom = 147.0
+margin_left = 431.0
+margin_top = 92.0
+margin_right = 455.0
+margin_bottom = 129.0
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 5 )
 align = 2
@@ -177,16 +176,16 @@ __meta__ = {
 }
 
 [node name="Audio" type="GridContainer" parent="VBoxContainer"]
-margin_top = 288.0
+margin_top = 264.0
 margin_right = 1680.0
-margin_bottom = 413.0
+margin_bottom = 371.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 40
 columns = 3
 
 [node name="lab_master" type="Label" parent="VBoxContainer/Audio"]
-margin_right = 293.0
-margin_bottom = 35.0
+margin_right = 237.0
+margin_bottom = 29.0
 custom_fonts/font = ExtResource( 5 )
 text = "Maser Volume: "
 __meta__ = {
@@ -194,9 +193,9 @@ __meta__ = {
 }
 
 [node name="master_volume_slider" type="HSlider" parent="VBoxContainer/Audio"]
-margin_left = 333.0
+margin_left = 277.0
 margin_right = 1575.0
-margin_bottom = 35.0
+margin_bottom = 29.0
 rect_min_size = Vector2( 200, 16 )
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -210,7 +209,7 @@ __meta__ = {
 [node name="lab_Master_number" type="Label" parent="VBoxContainer/Audio"]
 margin_left = 1615.0
 margin_right = 1680.0
-margin_bottom = 35.0
+margin_bottom = 29.0
 rect_min_size = Vector2( 65, 0 )
 custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 5 )
@@ -221,9 +220,9 @@ __meta__ = {
 }
 
 [node name="lab_music" type="Label" parent="VBoxContainer/Audio"]
-margin_top = 45.0
-margin_right = 293.0
-margin_bottom = 80.0
+margin_top = 39.0
+margin_right = 237.0
+margin_bottom = 68.0
 custom_fonts/font = ExtResource( 5 )
 text = "Music Volume: "
 __meta__ = {
@@ -231,10 +230,10 @@ __meta__ = {
 }
 
 [node name="music_volume_slider" type="HSlider" parent="VBoxContainer/Audio"]
-margin_left = 333.0
-margin_top = 45.0
+margin_left = 277.0
+margin_top = 39.0
 margin_right = 1575.0
-margin_bottom = 80.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -247,9 +246,9 @@ __meta__ = {
 
 [node name="lab_Music_number" type="Label" parent="VBoxContainer/Audio"]
 margin_left = 1615.0
-margin_top = 45.0
+margin_top = 39.0
 margin_right = 1680.0
-margin_bottom = 80.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 65, 0 )
 custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 5 )
@@ -260,9 +259,9 @@ __meta__ = {
 }
 
 [node name="lab_effects" type="Label" parent="VBoxContainer/Audio"]
-margin_top = 90.0
-margin_right = 293.0
-margin_bottom = 125.0
+margin_top = 78.0
+margin_right = 237.0
+margin_bottom = 107.0
 custom_fonts/font = ExtResource( 5 )
 text = "Effects Volume: "
 __meta__ = {
@@ -270,10 +269,10 @@ __meta__ = {
 }
 
 [node name="effects_volume_slider" type="HSlider" parent="VBoxContainer/Audio"]
-margin_left = 333.0
-margin_top = 90.0
+margin_left = 277.0
+margin_top = 78.0
 margin_right = 1575.0
-margin_bottom = 125.0
+margin_bottom = 107.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -286,9 +285,9 @@ __meta__ = {
 
 [node name="lab_Effects_number" type="Label" parent="VBoxContainer/Audio"]
 margin_left = 1615.0
-margin_top = 90.0
+margin_top = 78.0
 margin_right = 1680.0
-margin_bottom = 125.0
+margin_bottom = 107.0
 rect_min_size = Vector2( 65, 0 )
 custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 5 )
@@ -299,9 +298,9 @@ __meta__ = {
 }
 
 [node name="Controls" type="GridContainer" parent="VBoxContainer"]
-margin_top = 463.0
+margin_top = 421.0
 margin_right = 1680.0
-margin_bottom = 463.0
+margin_bottom = 421.0
 [connection signal="pressed" from="btn_back" to="." method="back"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_video" to="." method="video"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_audio" to="." method="audio"]

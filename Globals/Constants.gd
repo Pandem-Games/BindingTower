@@ -10,6 +10,7 @@ const TOWER_PLACEMENT_CONFIRMED = "tower_placement_confirmed"
 
 # Groups
 const ENEMIES = "enemies"
+const TOWERS = "towers"
 
 # Layers
 enum CollisionLayers {

@@ -12,7 +12,6 @@ var state: int = eSpawner.SPAWN
 # Variables
 export(PackedScene) var enemy_resource
 var enemies := []
-var delays := []
 var elapsedTime: float
 var curve: Curve2D
 onready var path: Node2D = $MainPath
@@ -20,6 +19,13 @@ onready var path: Node2D = $MainPath
 # Functions
 func _ready():
 	path.curve = curve
+	
+
+	elapsedTime = 0.0
+	state = eSpawner.SPAWN
+
+# Spawns enemies who's timers have elapsed
+func spawn():
 	for _i in range(NUM_ENEMIES):
 		# TODO: Move to EnemyPath.gd
 		# Duplicate curve so that the curve can be given to each enemy
@@ -39,24 +45,14 @@ func _ready():
 		enemies.append(enemy_path)
 		var enemy: Node2D = enemy_path.get_node("Path/Enemy")
 		Helpers.call_error_function(enemy, "connect", [Constants.ENEMY_KILLED, self, "_on_Enemy_killed"])
-			
-		delays.append((RN.G.randf() * MAX_DELAY) as float)
-
-	elapsedTime = 0.0
-	state = eSpawner.SPAWN
-
-# Spawns enemies who's timers have elapsed
-func spawn(delta: float):
-	# Increment the timer and if the delay time has been reached then spawn the enemy
-	# TODO: Implement Timers instead
-	elapsedTime += delta
-	for i in range(delays.size() - 1):
-		if delays[i] != -1.0 && elapsedTime >= delays[i]:
-			self.add_child(enemies[i])
-			delays[i] = -1
-			
-	if elapsedTime >= delays.max():
-		state = eSpawner.WAIT
+		
+		var timer := get_tree().create_timer((RN.G.randf() * MAX_DELAY) as float)
+		timer.connect("timeout", self, "_on_timeout")
+		
+	state = eSpawner.WAIT
+		
+func _on_timeout():
+	self.add_child(enemies.pop_back())
 	
 func wait():
 	pass
@@ -72,7 +68,7 @@ func init(c: Curve2D):
 func _process(delta: float):
 	match state:
 		eSpawner.SPAWN:
-			spawn(delta)
+			spawn()
 		eSpawner.WAIT:
 			wait()
 

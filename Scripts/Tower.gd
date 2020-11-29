@@ -1,12 +1,13 @@
 extends Node2D
 
+class_name Tower
+
 # Signals
 signal tower_placement_confirmed
 
 # State
 enum eTower {SELECTING, RESTRICTED, COOLDOWN, WAIT, FINISH}
 var state: int = eTower.WAIT
-
 
 # Variables
 export(float) var radius
@@ -16,9 +17,11 @@ export(PackedScene) var bullet_resource
 export(Color) var restricted_color
 onready var range_shape := $Range/Shape
 onready var range_ui := $RangeUI
+onready var tower_area := $Area
 var enemies := []
 var restricted_areas := []
 var elapsed_time := 0.0
+var items := []
 
 # Functions
 
@@ -71,6 +74,9 @@ func selected():
 func finish():
 	state = eTower.FINISH
 	queue_free()
+	
+func add_item(item: Item):
+	item._item_initial(self)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -79,7 +85,7 @@ func _ready():
 	
 	# Creating a circle representing the towers range to display to the user
 	var circle: PoolVector2Array = range_ui.polygon
-	for i in range(circle_vertices - 1):
+	for i in range(circle_vertices):
 		circle.push_back(polar2cartesian(radius, i * (TAU / circle_vertices)))
 	range_ui.polygon = circle
 	
@@ -108,7 +114,7 @@ func _on_Range_area_entered(area: Area2D):
 
 # Signal function called when an enemy body leaves the towers area
 func _on_Range_area_exited(area: Area2D):
-	for i in range(enemies.size() - 1):
+	for i in range(enemies.size()):
 		# Removing the enemy reference when it exits the towers range
 		var enemy: Node2D = enemies[i].get_ref()
 		if enemy == area.get_parent():
@@ -123,7 +129,7 @@ func _on_Area_area_entered(area: Area2D):
 
 # Signal function called when tower leaves restricted placement area
 func _on_Area_area_exited(area: Area2D):
-	for i in range(restricted_areas.size() - 1):
+	for i in range(restricted_areas.size()):
 		# Removing the collision reference when it exits the towers area
 		var restricted_area: Area2D = restricted_areas[i].get_ref()
 		if restricted_area == area:
