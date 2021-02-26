@@ -13,7 +13,6 @@ var state: int = eTower.WAIT
 export(float) var radius
 export(float) var cooldown_time
 export(int) var circle_vertices
-export(PackedScene) var bullet_resource
 export(Color) var restricted_color
 onready var range_shape := $Range/Shape
 onready var range_ui := $RangeUI
@@ -28,7 +27,7 @@ var items := []
 # Fires a bullet at the given enemy
 func fire_at(enemy: WeakRef):
 	# Adding the bullet to the scene
-	var bullet: Node2D = bullet_resource.instance()
+	var bullet: Node2D = Constants.BULLET_RESOURCE.instance()
 	bullet.init(enemy)
 	add_child(bullet)
 

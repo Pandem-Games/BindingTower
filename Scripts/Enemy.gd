@@ -11,7 +11,6 @@ var state: int = eEnemy.MOVE
 # Variables
 export(int) var max_health = 100
 export(int) var speed = 100
-export(PackedScene) var damage_number_resource
 onready var sprite := $Area/Collision/Sprite
 var health: int
 
@@ -29,7 +28,7 @@ func hit(bullet: Node2D):
 	bullet.queue_free()
 	
 	# Spawning damage number
-	var damage_number: Node2D = damage_number_resource.instance()
+	var damage_number: Node2D = Constants.DAMAGE_NUMBER_RESOURCE.instance()
 	damage_number.init(bullet.damage, self.position)
 	Helpers.get_main_node().add_child(damage_number)
 	

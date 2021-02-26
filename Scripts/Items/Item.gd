@@ -7,7 +7,7 @@ enum eItem {DROPPED, ACTIVE, FINISHED}
 var state: int = eItem.DROPPED
 
 # Variables
-onready var control = $Control
+onready var control: Control = $Control
 
 # Functions
 func _ready() -> void:

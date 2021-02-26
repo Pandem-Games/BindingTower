@@ -8,7 +8,7 @@ enum eTowerButton {WAIT, SELECTED, FINISH}
 var state: int = eTowerButton.WAIT
 
 # Variables
-export(PackedScene) var tower_resource
+#export(PackedScene) var tower_resource
 
 # Functions
 func _ready():
@@ -17,7 +17,7 @@ func _ready():
 # Used when the tower is selected by the user
 func select():
 	# Instantiating tower
-	var tower: Sprite = tower_resource.instance()
+	var tower: Sprite = Constants.TOWER_RESOURCE.instance()
 	Helpers.get_main_node().add_child(tower)
 	
 	# Connecting relevant signals from the tower to the tower button

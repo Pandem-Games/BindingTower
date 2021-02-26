@@ -10,7 +10,7 @@ enum eSpawner {SPAWN, WAIT, FINISH}
 var state: int = eSpawner.SPAWN
 
 # Variables
-export(PackedScene) var enemy_resource
+#export(PackedScene) var enemy_resource
 var enemies := []
 var elapsedTime: float
 var curve: Curve2D
@@ -19,8 +19,6 @@ onready var path: Node2D = $MainPath
 # Functions
 func _ready():
 	path.curve = curve
-	
-
 	elapsedTime = 0.0
 	state = eSpawner.SPAWN
 
@@ -40,7 +38,7 @@ func spawn():
 			curve_dup.set_point_position(j, position)
 		
 		# Create the enemy
-		var enemy_path: Node2D = enemy_resource.instance()
+		var enemy_path: Node2D = Constants.ENEMY_PATH_RESOURCE.instance()
 		enemy_path.init(curve_dup)
 		enemies.append(enemy_path)
 		var enemy: Node2D = enemy_path.get_node("Path/Enemy")
