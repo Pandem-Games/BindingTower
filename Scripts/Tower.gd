@@ -25,7 +25,7 @@ var items := []
 # Functions
 
 # Fires a bullet at the given enemy
-func fire_at(enemy: WeakRef):
+func fire_at(enemy: WeakRef) -> void:
 	# Adding the bullet to the scene
 	var bullet: Node2D = Constants.BULLET_RESOURCE.instance()
 	bullet.init(enemy)
@@ -37,7 +37,7 @@ func fire_at(enemy: WeakRef):
 	
 
 # Waits for an enemy to get in range to fire at
-func wait():
+func wait() -> void:
 	for enemy in enemies:
 		# Firing at enemy if they exist
 		if enemy.get_ref():
@@ -48,7 +48,7 @@ func wait():
 			enemies.remove(enemies.find(enemy))
 
 # Calculates the cooldown for firing a bullet
-func cooldown(delta: float):
+func cooldown(delta: float) -> void:
 	# Incrementing the cooldown timer and changing state if timer finishes
 	elapsed_time += delta
 	if elapsed_time >= cooldown_time:
@@ -56,29 +56,31 @@ func cooldown(delta: float):
 		wait()
 
 # Changes the tower position to the mouse position
-func follow_mouse():
+func follow_mouse() -> void:
 	global_position = get_global_mouse_position()
 
 # Restricts the tower from being placed
-func restricted():
+func restricted() -> void:
 	modulate = restricted_color
 	state = eTower.RESTRICTED
 
 # Allows the user to place the tower if they click
-func selected():
+func selected() -> void:
 	modulate = Color.white
 	state = eTower.SELECTING
 
 # Used when the tower is no longer needed
-func finish():
+func finish() -> void:
 	state = eTower.FINISH
 	queue_free()
 	
-func add_item(item: Item):
-	item._item_initial(self)
+#func add_item(item: Item) -> void:
+#	print("Adding item")
+#	items.append(item)
+#	item._item_initial(self)
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	# Changing the firing radius
 	range_shape.get_shape().radius = radius
 	
@@ -93,7 +95,7 @@ func _ready():
 	selected()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float):
+func _process(delta: float) -> void:
 	match state:
 		# Tower is waiting for an enemy to appear in range
 		eTower.WAIT:
@@ -106,13 +108,13 @@ func _process(delta: float):
 			follow_mouse()
 
 # Signal function called when an enemy body enters the towers area
-func _on_Range_area_entered(area: Area2D):
+func _on_Range_area_entered(area: Area2D) -> void:
 	# Appending a weak reference to the enemy so that if it gets killed and
 	# removed from the scene, accessing the reference won't crash godot
 	enemies.append(weakref(area.get_parent()))
 
 # Signal function called when an enemy body leaves the towers area
-func _on_Range_area_exited(area: Area2D):
+func _on_Range_area_exited(area: Area2D) -> void:
 	for i in range(enemies.size()):
 		# Removing the enemy reference when it exits the towers range
 		var enemy: Node2D = enemies[i].get_ref()
@@ -121,13 +123,13 @@ func _on_Range_area_exited(area: Area2D):
 			break
 
 # Signal function called when the tower is overlapping another tower or the path
-func _on_Area_area_entered(area: Area2D):
+func _on_Area_area_entered(area: Area2D) -> void:
 	restricted_areas.append(weakref(area))
 	if state == eTower.SELECTING:
 		restricted()
 
 # Signal function called when tower leaves restricted placement area
-func _on_Area_area_exited(area: Area2D):
+func _on_Area_area_exited(area: Area2D) -> void:
 	for i in range(restricted_areas.size()):
 		# Removing the collision reference when it exits the towers area
 		var restricted_area: Area2D = restricted_areas[i].get_ref()
@@ -139,15 +141,21 @@ func _on_Area_area_exited(area: Area2D):
 		selected()
 		
 # Signal function called when the tower placement gets cancelled
-func _on_Tower_placement_cancelled():
+func _on_Tower_placement_cancelled() -> void:
 	# Deletes the tower if it was being placed
 	if state == eTower.SELECTING or state == eTower.RESTRICTED:
 		finish()
 
 # Signal function called when the user clicks on the tower area
-func _on_TowerControl_gui_input(event: InputEvent):
+func _on_TowerControl_gui_input(event: InputEvent) -> void:
 	if state == eTower.SELECTING and event.is_action_pressed("ui_select"):
 		# Disable the towers range ui then change the tower to waiting
 		range_ui.visible = false
+		
+		# Adding items to the tower
+		self.items = Helpers.get_items()
+		for i in items:
+			i._item_initial(self)
+		
 		state = eTower.WAIT
 		emit_signal(Constants.TOWER_PLACEMENT_CONFIRMED)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/EnemyPath.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
-[ext_resource path="res://Nodes/DamageNumber.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assests/Images/Enemy.png" type="Texture" id=4]
 
 [sub_resource type="Curve2D" id=1]
@@ -11,7 +10,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 15.9386, 15.9153 )
+extents = Vector2( 8, 8 )
 
 [node name="EnemyPath" type="Node2D"]
 z_index = 1
@@ -26,7 +25,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-damage_number_resource = ExtResource( 3 )
 
 [node name="Area" type="Area2D" parent="Path/Enemy"]
 collision_layer = 4

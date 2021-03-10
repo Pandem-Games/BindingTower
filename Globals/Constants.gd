@@ -6,11 +6,12 @@ extends Node
 const ENEMY_KILLED = "enemy_killed"
 const TOWER_PLACEMENT_CANCELLED = "tower_placement_cancelled"
 const TOWER_PLACEMENT_CONFIRMED = "tower_placement_confirmed"
-
+const TIMER_TIMEOUT = "timeout"
 
 # Groups
 const ENEMIES = "enemies"
 const TOWERS = "towers"
+const ITEMS = "items"
 
 # Layers
 enum CollisionLayers {

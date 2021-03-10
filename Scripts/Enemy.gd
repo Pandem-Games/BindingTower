@@ -15,14 +15,14 @@ onready var sprite := $Area/Collision/Sprite
 var health: int
 
 # Functions
-func move(delta: float):
+func move(delta: float) -> void:
 	sprite.visible = true
 	offset += speed * delta
 	if unit_offset >= 1.00:
 		finish()
 
 # Calculates a hit from a bullet
-func hit(bullet: Node2D):
+func hit(bullet: Node2D) -> void:
 	# Subtracting health from bullet
 	health -= bullet.damage
 	bullet.queue_free()
@@ -37,13 +37,13 @@ func hit(bullet: Node2D):
 		finish()
 
 # Called when the scene is finished
-func finish():
+func finish() -> void:
 	sprite.visible = false
 	emit_signal(Constants.ENEMY_KILLED)
 	state = eEnemy.FINISH
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	sprite.visible = false
 	health = max_health
 	add_to_group(Constants.ENEMIES)
@@ -51,7 +51,7 @@ func _ready():
 	loop = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float):
+func _process(delta: float) -> void:
 	match state:
 		eEnemy.MOVE:
 			move(delta)

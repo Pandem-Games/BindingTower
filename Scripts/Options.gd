@@ -4,11 +4,11 @@ class Resolution:
 	var width: int
 	var height: int
 
-	func _init(w, h):
+	func _init(w, h)  -> void:
 		width = w
 		height = h
 
-	func to_string():
+	func to_string() -> String:
 		return (width as String) + " x " + (height as String)
 
 
@@ -45,7 +45,7 @@ onready var music_volume: Control = $VBoxContainer/Audio/music_volume_slider
 onready var effects_volume: Control = $VBoxContainer/Audio/effects_volume_slider
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	# Call this to hide the other options and just display video options
 	video()
 	
@@ -56,29 +56,29 @@ func _ready():
 	set_fullscreen_btn()
 
 
-func video():
+func video() -> void:
 	video_tab.set_visible(true);
 	audio_tab.set_visible(false);
 	controls_tab.set_visible(false);
 
 
-func audio():
+func audio() -> void:
 	video_tab.set_visible(false);
 	audio_tab.set_visible(true);
 	controls_tab.set_visible(false);
 
 
-func controls():
+func controls() -> void:
 	video_tab.set_visible(false);
 	audio_tab.set_visible(false);
 	controls_tab.set_visible(true);
 
 
-func back():
+func back() -> void:
 	Helpers.call_error_function(get_tree(), "change_scene", ["res://Nodes/Scenes/Menu/TitleScreen.tscn"])
 
 
-func set_resolution_btn(item: Array):
+func set_resolution_btn(item: Array) -> void:
 	var counter = 0
 	
 	for i in item:
@@ -88,18 +88,18 @@ func set_resolution_btn(item: Array):
 		counter += 1
 
 
-func resolution_selected(item_id):
+func resolution_selected(item_id) -> void:
 	var resolution = all_options["resolution"][item_id]
 	Settings.set_resolution(resolution.width, resolution.height)
 	Settings.save_game()
 
 
-func volume_slider_changed(value, slider_name):
+func volume_slider_changed(value, slider_name) -> void:
 	Settings.set_volume(value, slider_name)
 	(get_node("VBoxContainer/Audio/lab_" + slider_name + "_number") as Label).set_text(str(value))
 
 
-func set_volume_slider():
+func set_volume_slider() -> void:
 	# Updates the number at the end of the slider
 	volume_slider_changed(Settings.settings["Master_Volume"], "Master")
 	volume_slider_changed(Settings.settings["Music_Volume"], "Music")
@@ -111,20 +111,20 @@ func set_volume_slider():
 	effects_volume.value = float(Settings.settings["Effects_Volume"])
 
 
-func set_fullscreen_btn():
+func set_fullscreen_btn() -> void:
 	if Settings.settings["borderless"] == false:
 		if Settings.settings["fullscreen"] == true:
 			all_options["toggle_ignore_sig"] = true
 			fullscreen_toggle.set_pressed(true)
 
 
-func set_borderless_fullscreen_btn():
+func set_borderless_fullscreen_btn() -> void:
 	if Settings.settings["borderless"] == true and Settings.settings["fullscreen"] == true:
 		all_options["toggle_ignore_sig"] = true
 		borderless_fullscreen_toggle.set_pressed(true)
 
 
-func fullscreen_selected(value):
+func fullscreen_selected(value) -> void:
 	if all_options["toggle_ignore_sig"] == true:
 		all_options["toggle_ignore_sig"] = false
 		return
@@ -138,7 +138,7 @@ func fullscreen_selected(value):
 	all_options["toggle_ignore_sig"] = false
 
 
-func borderless_fullscreen_selected(value):
+func borderless_fullscreen_selected(value) -> void:
 	if all_options["toggle_ignore_sig"] == true:
 		all_options["toggle_ignore_sig"] = false
 		return
