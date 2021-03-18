@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Items/Item.gd"
 }, {
+"base": "Item",
+"class": "ItemBulletClone",
+"language": "GDScript",
+"path": "res://Scripts/Items/ItemBulletClone.gd"
+}, {
+"base": "Item",
+"class": "ItemSpeed",
+"language": "GDScript",
+"path": "res://Scripts/Items/ItemSpeed.gd"
+}, {
 "base": "Node2D",
 "class": "Tower",
 "language": "GDScript",
@@ -27,6 +37,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Bullet": "",
 "Item": "",
+"ItemBulletClone": "",
+"ItemSpeed": "",
 "Tower": ""
 }
 
@@ -47,7 +59,6 @@ Settings="*res://Globals/Settings.tscn"
 
 gdscript/warnings/treat_warnings_as_errors=true
 gdscript/warnings/unused_signal=false
-gdscript/warnings/unsafe_cast=true
 gdscript/warnings/unsafe_call_argument=true
 
 [display]

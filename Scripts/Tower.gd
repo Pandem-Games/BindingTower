@@ -29,7 +29,8 @@ func fire_at(enemy: WeakRef) -> void:
 	# Adding the bullet to the scene
 	var bullet: Node2D = Constants.BULLET_RESOURCE.instance()
 	bullet.init(enemy)
-	add_child(bullet)
+	Helpers.get_main_node().add_child(bullet)
+	bullet.global_position = global_position
 
 	# Resetting the cooldown timer
 	elapsed_time = 0.0

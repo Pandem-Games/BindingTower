@@ -8,6 +8,7 @@ var state: int = eItem.DROPPED
 
 # Variables
 onready var control: Control = $Control
+var item_count: int = 1
 
 # Functions
 func _ready() -> void:
@@ -35,10 +36,6 @@ func _on_Control_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select"):
 		match state:
 			eItem.DROPPED:
-#				var towers := get_tree().get_nodes_in_group(Constants.TOWERS)
-#				if towers:
-#					for tower in towers:
-#						tower.add_item(self)
 				Helpers.call_error_function(Helpers, "add_item", [self])
 				visible = false
 				state = eItem.ACTIVE

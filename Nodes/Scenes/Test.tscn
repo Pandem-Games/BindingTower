@@ -36,11 +36,14 @@ scale = Vector2( 1.50185, 0.691505 )
 polygon = PoolVector2Array( -135.661, -378.818, 644.056, -378.61, 644.247, 24.5419, -27.1479, 25.2463, -27.0822, 245.769, 800.169, 246.884, 800.169, 340.241, -68.8518, 337.463, -69.043, -66.4848, 602.051, -66.2872, 601.806, -286.8, -135.217, -286.98 )
 
 [node name="Speed" parent="Background" instance=ExtResource( 5 )]
-position = Vector2( 130.633, 581.375 )
+position = Vector2( 131.3, 579.375 )
 z_index = 7
 
 [node name="Clone" parent="Background" instance=ExtResource( 2 )]
-position = Vector2( 199.627, 581.375 )
+position = Vector2( 202.961, 579.375 )
+
+[node name="Clone2" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 274.968, 579.375 )
 
 [node name="UI" type="Node2D" parent="."]
 z_index = 4096
