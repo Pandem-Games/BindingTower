@@ -12,27 +12,27 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://Scripts/Bullet.gd"
+"path": "res://Main/Bullet/Bullet.gd"
 }, {
 "base": "Sprite",
 "class": "Item",
 "language": "GDScript",
-"path": "res://Scripts/Items/Item.gd"
+"path": "res://Main/Item/Item.gd"
 }, {
 "base": "Item",
 "class": "ItemBulletClone",
 "language": "GDScript",
-"path": "res://Scripts/Items/ItemBulletClone.gd"
+"path": "res://Main/Item/BulletClone/BulletClone.gd"
 }, {
 "base": "Item",
 "class": "ItemSpeed",
 "language": "GDScript",
-"path": "res://Scripts/Items/ItemSpeed.gd"
+"path": "res://Main/Item/Speed/Speed.gd"
 }, {
 "base": "Node2D",
 "class": "Tower",
 "language": "GDScript",
-"path": "res://Scripts/Tower.gd"
+"path": "res://Main/Tower/Tower.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="BindingTower"
-run/main_scene="res://Nodes/Scenes/Menu/TitleScreen.tscn"
+run/main_scene="res://UI/TitleScreen/TitleScreen.tscn"
 config/icon="res://Assests/Images/icon.png"
 
 [autoload]

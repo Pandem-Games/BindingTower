@@ -1,0 +1,277 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Rectangle.png" type="Texture" id=1]
+[ext_resource path="res://Assests/Images/icon.png" type="Texture" id=2]
+[ext_resource path="res://Main/Tower/WeakTower/WeakTower.png" type="Texture" id=3]
+[ext_resource path="res://UI/Tower/TowerButton.gd" type="Script" id=4]
+
+[node name="MainUIMargin" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainUI" type="VBoxContainer" parent="."]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 1895.0
+margin_bottom = 1080.0
+mouse_filter = 2
+
+[node name="Coins" type="HBoxContainer" parent="MainUI"]
+margin_right = 1870.0
+margin_bottom = 30.0
+mouse_filter = 2
+alignment = 2
+
+[node name="Bar" type="NinePatchRect" parent="MainUI/Coins"]
+margin_left = 1670.0
+margin_right = 1870.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 120, 120 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Margin" type="MarginContainer" parent="MainUI/Coins/Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 7
+custom_constants/margin_top = 7
+custom_constants/margin_left = 7
+custom_constants/margin_bottom = 7
+
+[node name="Items" type="HBoxContainer" parent="MainUI/Coins/Bar/Margin"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 23.0
+custom_constants/separation = 4
+
+[node name="Amount" type="Label" parent="MainUI/Coins/Bar/Margin/Items"]
+margin_right = 164.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Container" type="Control" parent="MainUI/Coins/Bar/Margin/Items"]
+margin_left = 168.0
+margin_right = 186.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 18, 0 )
+
+[node name="Icon" type="TextureRect" parent="MainUI/Coins/Bar/Margin/Items/Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Life" type="HBoxContainer" parent="MainUI"]
+margin_top = 34.0
+margin_right = 1870.0
+margin_bottom = 64.0
+mouse_filter = 2
+alignment = 2
+
+[node name="Bar" type="NinePatchRect" parent="MainUI/Life"]
+margin_left = 1670.0
+margin_right = 1870.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 120, 120 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Margin" type="MarginContainer" parent="MainUI/Life/Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 7
+custom_constants/margin_top = 7
+custom_constants/margin_left = 7
+custom_constants/margin_bottom = 7
+
+[node name="Items" type="HBoxContainer" parent="MainUI/Life/Bar/Margin"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 23.0
+custom_constants/separation = 4
+
+[node name="Amount" type="Label" parent="MainUI/Life/Bar/Margin/Items"]
+margin_right = 164.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "5"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Container" type="Control" parent="MainUI/Life/Bar/Margin/Items"]
+margin_left = 168.0
+margin_right = 186.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 18, 0 )
+
+[node name="Icon" type="TextureRect" parent="MainUI/Life/Bar/Margin/Items/Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Gap" type="MarginContainer" parent="MainUI"]
+margin_top = 68.0
+margin_right = 1870.0
+margin_bottom = 971.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Bottom" type="HBoxContainer" parent="MainUI"]
+margin_top = 975.0
+margin_right = 1870.0
+margin_bottom = 1055.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Bar" type="NinePatchRect" parent="MainUI/Bottom"]
+margin_left = 785.0
+margin_right = 1085.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 300, 80 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 120, 120 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Margin" type="MarginContainer" parent="MainUI/Bottom/Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_top = 15
+custom_constants/margin_bottom = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Towers" type="HBoxContainer" parent="MainUI/Bottom/Bar/Margin"]
+margin_top = 15.0
+margin_right = 300.0
+margin_bottom = 65.0
+mouse_filter = 2
+alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
+margin_right = 13.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tower1" type="Control" parent="MainUI/Bottom/Bar/Margin/Towers" groups=[
+"tower_menu_item",
+]]
+margin_left = 17.0
+margin_right = 67.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+script = ExtResource( 4 )
+
+[node name="Icon" type="TextureRect" parent="MainUI/Bottom/Bar/Margin/Towers/Tower1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
+margin_left = 71.0
+margin_right = 85.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tower2" type="Control" parent="MainUI/Bottom/Bar/Margin/Towers" groups=[
+"tower_menu_item",
+]]
+margin_left = 89.0
+margin_right = 139.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="Icon" type="TextureRect" parent="MainUI/Bottom/Bar/Margin/Towers/Tower2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
+margin_left = 143.0
+margin_right = 156.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tower3" type="Control" parent="MainUI/Bottom/Bar/Margin/Towers" groups=[
+"tower_menu_item",
+]]
+margin_left = 160.0
+margin_right = 210.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="Icon" type="TextureRect" parent="MainUI/Bottom/Bar/Margin/Towers/Tower3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
+margin_left = 214.0
+margin_right = 228.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tower4" type="Control" parent="MainUI/Bottom/Bar/Margin/Towers" groups=[
+"tower_menu_item",
+]]
+margin_left = 232.0
+margin_right = 282.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="Icon" type="TextureRect" parent="MainUI/Bottom/Bar/Margin/Towers/Tower4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="MarginContainer6" type="MarginContainer" parent="MainUI/Bottom/Bar/Margin/Towers"]
+margin_left = 286.0
+margin_right = 300.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="gui_input" from="MainUI/Bottom/Bar/Margin/Towers/Tower1" to="MainUI/Bottom/Bar/Margin/Towers/Tower1" method="_on_Tower_gui_input"]

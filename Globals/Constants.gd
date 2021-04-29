@@ -22,8 +22,8 @@ enum CollisionLayers {
 }
 
 # Resources
-onready var BULLET_RESOURCE = preload("res://Nodes/Bullet.tscn")
-onready var DAMAGE_NUMBER_RESOURCE = preload("res://Nodes/DamageNumber.tscn")
-onready var SPAWNER_RESOURCE = preload("res://Nodes/Spawner.tscn")
-onready var ENEMY_PATH_RESOURCE = preload("res://Nodes/EnemyPath.tscn")
-onready var TOWER_RESOURCE = preload("res://Nodes/Towers/WeakTower.tscn")
+onready var BULLET_RESOURCE = preload("res://Main/Bullet/Bullet.tscn")
+onready var DAMAGE_NUMBER_RESOURCE = preload("res://UI/DamageNumber/DamageNumber.tscn")
+onready var SPAWNER_RESOURCE = preload("res://Main/Spawner/Spawner.tscn")
+onready var ENEMY_PATH_RESOURCE = preload("res://Main/Enemy/EnemyPath.tscn")
+onready var TOWER_RESOURCE = preload("res://Main/Tower/WeakTower/WeakTower.tscn")
