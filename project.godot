@@ -8,15 +8,44 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Main/Bullet/Bullet.gd"
+}, {
+"base": "Sprite",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Main/Item/Item.gd"
+}, {
+"base": "Item",
+"class": "ItemBulletClone",
+"language": "GDScript",
+"path": "res://Main/Item/BulletClone/BulletClone.gd"
+}, {
+"base": "Item",
+"class": "ItemSpeed",
+"language": "GDScript",
+"path": "res://Main/Item/Speed/Speed.gd"
+}, {
+"base": "Node2D",
+"class": "Tower",
+"language": "GDScript",
+"path": "res://Main/Tower/Tower.gd"
+} ]
 _global_script_class_icons={
-
+"Bullet": "",
+"Item": "",
+"ItemBulletClone": "",
+"ItemSpeed": "",
+"Tower": ""
 }
 
 [application]
 
 config/name="BindingTower"
-run/main_scene="res://Nodes/Scenes/Menu/TitleScreen.tscn"
+run/main_scene="res://UI/TitleScreen/TitleScreen.tscn"
 config/icon="res://Assests/Images/icon.png"
 
 [autoload]
@@ -28,8 +57,8 @@ Settings="*res://Globals/Settings.tscn"
 
 [debug]
 
+gdscript/warnings/treat_warnings_as_errors=true
 gdscript/warnings/unused_signal=false
-gdscript/warnings/unsafe_cast=true
 gdscript/warnings/unsafe_call_argument=true
 
 [display]

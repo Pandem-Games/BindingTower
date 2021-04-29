@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://Assests/Font/saved_styles/OptionText.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/Button/Button.png" type="Texture" id=2]
+
+
+[sub_resource type="StyleBoxTexture" id=1]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 100, 50 )
+margin_left = 10.2667
+margin_right = 10.4604
+margin_top = 10.2667
+margin_bottom = 9.29815
+
+[resource]
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = null
