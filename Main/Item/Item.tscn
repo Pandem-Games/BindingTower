@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Main/Item/Item.gd" type="Script" id=1]
 [ext_resource path="res://Main/Item/pickup.wav" type="AudioStream" id=2]
-[ext_resource path="res://Main/Item/ItemShadow.aseprite" type="SpriteFrames" id=3]
+[ext_resource path="res://Main/Item/ItemShadow/ItemShadow.aseprite" type="SpriteFrames" id=3]
 
 [node name="Item" type="Sprite"]
 script = ExtResource( 1 )
@@ -20,13 +20,14 @@ __meta__ = {
 
 [node name="PickupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = -10.025
 bus = "Effects"
 
 [node name="ItemShadow" type="AnimatedSprite" parent="."]
 position = Vector2( 0.178152, 25.507 )
 scale = Vector2( 1, 0.75 )
 frames = ExtResource( 3 )
-frame = 15
+frame = 18
 playing = true
 
 [connection signal="gui_input" from="Control" to="." method="_on_Control_gui_input"]
