@@ -40,7 +40,6 @@ polygon = PoolVector2Array( -135.661, -378.818, 644.056, -378.61, 644.247, 24.54
 
 [node name="Overclock" type="Node2D" parent="."]
 position = Vector2( 131.397, 580.946 )
-scale = Vector2( 1, 1 )
 
 [node name="Item" parent="Overclock" instance=ExtResource( 5 )]
 texture = ExtResource( 2 )
@@ -68,7 +67,6 @@ texture = ExtResource( 3 )
 script = ExtResource( 8 )
 
 [node name="UI" type="Node2D" parent="."]
-scale = Vector2( 1, 1 )
 z_index = 4096
 __meta__ = {
 "_edit_lock_": true

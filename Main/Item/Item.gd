@@ -7,14 +7,26 @@ enum eItem {DROPPED, ACTIVE, FINISHED}
 var state: int = eItem.DROPPED
 
 # Variables
+export(float) var float_amount := 1.0
 onready var control: Control = $Control
 onready var audio: AudioStreamPlayer = $PickupSound
+onready var item_shadow: AnimatedSprite = $ItemShadow
 var item_count: int = 1
+var current_time: float = 0.0
+var animation_length: float = 0.0
 
 # Functions
 func _ready() -> void:
 	visible = true
 	state = eItem.DROPPED
+	animation_length = Helpers.get_animation_length(item_shadow.frames, "default")
+	
+func _process(delta: float) -> void:
+	match state:
+		eItem.DROPPED:
+			var height: float = sin(current_time * ((2 * PI) / animation_length))
+			offset.y = height * float_amount
+			current_time += delta
 	
 func finish() -> void:
 	state = eItem.FINISHED
