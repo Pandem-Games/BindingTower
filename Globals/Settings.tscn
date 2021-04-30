@@ -11,7 +11,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="music" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 960, 540 )
+[node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 bus = "Music"

@@ -37,8 +37,9 @@ func _on_Control_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select"):
 		match state:
 			eItem.DROPPED:
-				Helpers.call_error_function(Helpers, "add_item", [self])
 				visible = false
 				audio.play()
+				yield(audio, "finished")
+				Helpers.call_error_function(Helpers, "add_item", [self])
 				state = eItem.ACTIVE
 				Helpers.safe_disconnect(control, "gui_input", self, "_on_Control_gui_input")

@@ -4,8 +4,7 @@
 [ext_resource path="res://Assests/Images/icon.png" type="Texture" id=2]
 [ext_resource path="res://Main/Item/Item.tscn" type="PackedScene" id=3]
 
-
-[node name="Node2D" type="Node2D"]
+[node name="BulletClone" type="Node2D"]
 
 [node name="Item" parent="." instance=ExtResource( 3 )]
 texture = ExtResource( 2 )
