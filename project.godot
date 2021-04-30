@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Item",
 "class": "ItemSpeed",
 "language": "GDScript",
-"path": "res://Main/Item/Speed/Speed.gd"
+"path": "res://Main/Item/Overclock/Overclock.gd"
 }, {
 "base": "Node2D",
 "class": "Tower",

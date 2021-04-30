@@ -8,6 +8,7 @@ var state: int = eItem.DROPPED
 
 # Variables
 onready var control: Control = $Control
+onready var audio: AudioStreamPlayer = $PickupSound
 var item_count: int = 1
 
 # Functions
@@ -38,5 +39,6 @@ func _on_Control_gui_input(event: InputEvent) -> void:
 			eItem.DROPPED:
 				Helpers.call_error_function(Helpers, "add_item", [self])
 				visible = false
+				audio.play()
 				state = eItem.ACTIVE
 				Helpers.safe_disconnect(control, "gui_input", self, "_on_Control_gui_input")
