@@ -8,6 +8,7 @@ var state: int = eItem.DROPPED
 
 # Variables
 export(float) var float_amount := 1.0
+export(float) var initial_float_height := 0.5
 onready var control: Control = $Control
 onready var audio: AudioStreamPlayer = $PickupSound
 onready var item_shadow: AnimatedSprite = $ItemShadow
@@ -20,6 +21,7 @@ func _ready() -> void:
 	visible = true
 	state = eItem.DROPPED
 	animation_length = Helpers.get_animation_length(item_shadow.frames, "default")
+	current_time = initial_float_height / animation_length
 	
 func _process(delta: float) -> void:
 	match state:
