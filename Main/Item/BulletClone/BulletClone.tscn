@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Main/Item/BulletClone/BulletClone.gd" type="Script" id=1]
-[ext_resource path="res://Assests/Images/icon.png" type="Texture" id=2]
+[ext_resource path="res://Main/Item/BulletClone/BulletClone.png" type="Texture" id=2]
 [ext_resource path="res://Main/Item/Item.tscn" type="PackedScene" id=3]
 
 [node name="BulletClone" type="Node2D"]
