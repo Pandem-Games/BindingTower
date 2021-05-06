@@ -11,7 +11,6 @@ func _ready() -> void:
 
 
 func change_color_state(state_given, changed_state) -> void:
-	#print(state_given)
 	match changed_state:
 		state_given.ONHOVER:
 			# change the color to yellow

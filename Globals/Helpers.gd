@@ -31,6 +31,10 @@ func get_closest_object(target: Node2D, objects: Array) -> Node2D:
 	else:
 		return null
 
+# Shortcut for getting nodes in a group
+func get_group(group: String) -> Array:
+	return get_tree().get_nodes_in_group(group)
+	
 # Gets all currently active items via the group
 func get_items() -> Array:
 	return get_tree().get_nodes_in_group(Constants.ITEMS)
@@ -51,7 +55,6 @@ func add_item(item: Node2D) -> int:
 			# an existing item of the same type, in which case we add to it
 			var items = item_node.get_children()
 			for same_item in items:
-				print(same_item.get_class(), item.get_class())
 				if same_item.get_class() == item.get_class():
 					(same_item as Item).item_count += 1
 					return OK
