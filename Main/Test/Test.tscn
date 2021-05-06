@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main/Map.gd" type="Script" id=1]
 [ext_resource path="res://Main/Item/Overclock/Overclock.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Main/Item/Item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/Tower/TowerUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Main/Item/Overclock/Overclock.gd" type="Script" id=7]
+[ext_resource path="res://Main/Item/Overclock/Overclock.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -66,3 +67,12 @@ position = Vector2( 276.028, 578.69 )
 
 [node name="BulletClone2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 352.035, 577.356 )
+
+[node name="BulletClone3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 422.709, 572.023 )
+
+[node name="BulletClone4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 492.049, 572.023 )
+
+[node name="Overclock3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 132.013, 501.353 )

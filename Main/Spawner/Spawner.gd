@@ -1,7 +1,7 @@
 extends Node2D
 
 # Constants
-const NUM_ENEMIES = 100
+const NUM_ENEMIES = 1000
 const POINT_VARIATION = 10.0
 const MAX_DELAY: float = 5.0
 

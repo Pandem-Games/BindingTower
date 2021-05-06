@@ -33,5 +33,6 @@ func _item_on_hit(_bullet: Node2D, _target: Node2D) -> void:
 			new_bullet.set_meta(BULLET_COUNT_PROPERTY, bullet_count - 1)
 			
 			# Adding the bullet to the scene
-			Helpers.get_main_node().add_child(new_bullet)
+			Helpers.get_main_node().call_deferred("add_child", new_bullet)
+			yield(new_bullet, "ready")
 			new_bullet.global_position = _target.global_position
