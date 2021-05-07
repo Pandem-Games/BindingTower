@@ -25,6 +25,13 @@ func move(delta: float) -> void:
 		var direction: Vector2 = global_position.direction_to(target.get_ref().global_position)
 		translate(direction * speed * delta)
 	else:
+		var enemies = Helpers.get_group(Constants.ENEMIES)
+		if enemies:
+			var enemy = Helpers.get_closest_object(self, enemies)
+			if enemy:
+				target = weakref(enemy)
+				move(delta)
+				return
 		queue_free()
 
 # Called when the bullet is finished

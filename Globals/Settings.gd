@@ -5,12 +5,12 @@ const SAVE_PATH = "res://save.json"
 
 # Only ogg and wav files - wav is much bigger
 var menu_music = [
-	"res://Assests/Music/menu_music.ogg"
+	"res://UI/TitleScreen/TitleScreen.wav"
 ]
 
 # Only ogg and wav files
 var game_music = [
-	"res://Assests/Music/SwampRaceMusic.ogg"
+	"res://UI/TitleScreen/TitleScreen.wav"
 ]
 
 #this will probably be the version check

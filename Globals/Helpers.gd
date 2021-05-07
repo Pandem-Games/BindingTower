@@ -31,6 +31,10 @@ func get_closest_object(target: Node2D, objects: Array) -> Node2D:
 	else:
 		return null
 
+# Shortcut for getting nodes in a group
+func get_group(group: String) -> Array:
+	return get_tree().get_nodes_in_group(group)
+	
 # Gets all currently active items via the group
 func get_items() -> Array:
 	return get_tree().get_nodes_in_group(Constants.ITEMS)
@@ -51,20 +55,17 @@ func add_item(item: Node2D) -> int:
 			# an existing item of the same type, in which case we add to it
 			var items = item_node.get_children()
 			for same_item in items:
-				print(same_item.get_class(), item.get_class())
 				if same_item.get_class() == item.get_class():
 					(same_item as Item).item_count += 1
 					return OK
 			
-			# Otherwise if there isn't then 
-			print("Adding item to group!")
+			# Otherwise if there isn't then
 			item.add_to_group(Constants.ITEMS)
 			item_node.add_child(item)
 		else:
 			# if the item node doesn't exist then we create it and add it to the main node
 			var new_node = Node2D.new()
 			new_node.name = "Items"
-			print("Adding item to group!")
 			item.add_to_group(Constants.ITEMS)
 			
 			new_node.add_child(item)
@@ -72,3 +73,7 @@ func add_item(item: Node2D) -> int:
 		return OK
 	
 	return ERR_UNAVAILABLE
+	
+# Gets the length of an animation in seconds
+func get_animation_length(frames: SpriteFrames, animation: String):
+	return frames.get_frame_count(animation) / frames.get_animation_speed(animation)

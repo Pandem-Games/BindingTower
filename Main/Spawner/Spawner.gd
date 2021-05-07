@@ -1,7 +1,7 @@
 extends Node2D
 
 # Constants
-const NUM_ENEMIES = 5
+const NUM_ENEMIES = 1000
 const POINT_VARIATION = 10.0
 const MAX_DELAY: float = 5.0
 
@@ -41,9 +41,7 @@ func spawn() -> void:
 		var enemy_path: Node2D = Constants.ENEMY_PATH_RESOURCE.instance()
 		enemy_path.init(curve_dup)
 		enemies.append(enemy_path)
-		var enemy: Node2D = enemy_path.get_node("Path/Enemy")
-		Helpers.call_error_function(enemy, "connect", [Constants.ENEMY_KILLED, self, "_on_Enemy_killed"])
-		
+
 		var timer := get_tree().create_timer(RN.G.randf() * MAX_DELAY)
 		Helpers.call_error_function(timer, "connect", ["timeout", self, "_on_timeout"])
 		
@@ -69,7 +67,3 @@ func _process(_delta: float) -> void:
 			spawn()
 		eSpawner.WAIT:
 			wait()
-
-# Signal function ran when an enemy reaches the end of the path
-func _on_Enemy_killed() -> void:
-	print("Enemy finished path")

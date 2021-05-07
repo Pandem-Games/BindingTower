@@ -74,11 +74,6 @@ func selected() -> void:
 func finish() -> void:
 	state = eTower.FINISH
 	queue_free()
-	
-#func add_item(item: Item) -> void:
-#	print("Adding item")
-#	items.append(item)
-#	item._item_initial(self)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
