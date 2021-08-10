@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Main/Player/PlayerAnimation/Player.aseprite" type="SpriteFrames" id=1]
+[ext_resource path="res://Main/Player/Player.gd" type="Script" id=2]
 
-[node name="Player" type="AnimatedSprite"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.1163, 43.6225 )
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.396835, -44.0849 )
+shape = SubResource( 1 )
+
+[node name="Player" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -64.0526 )
 frames = ExtResource( 1 )
