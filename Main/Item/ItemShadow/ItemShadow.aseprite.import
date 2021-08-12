@@ -1,26 +1,3 @@
 [remap]
 
-importer="aseprite.wizard.plugin"
-type="SpriteFrames"
-path="res://.import/ItemShadow.aseprite-0e1a9c7df785beb105fe80c23c4af558.res"
-
-[deps]
-
-source_file="res://Main/Item/ItemShadow/ItemShadow.aseprite"
-dest_files=[ "res://.import/ItemShadow.aseprite-0e1a9c7df785beb105fe80c23c4af558.res" ]
-
-[params]
-
-split_layers=false
-exclude_layers_pattern=""
-only_visible_layers=false
-trim_images=true
-sprite_filename_pattern="{basename}.{layer}.{extension}"
-texture_strip/import_texture_strip=false
-texture_strip/filename_pattern="{basename}.{layer}.Strip.{extension}"
-texture_atlas/import_texture_atlas=false
-texture_atlas/filename_pattern="{basename}.{layer}.Atlas.{extension}"
-texture_atlas/frame_filename_pattern="{basename}.{layer}.{animation}.{frame}.Atlas.{extension}"
-animated_texture/import_animated_texture=true
-animated_texture/filename_pattern="{basename}.{layer}.{animation}.Texture.{extension}"
-animated_texture/frame_filename_pattern="{basename}.{layer}.{animation}.{frame}.Texture.{extension}"
+importer="keep"
