@@ -4,15 +4,19 @@
 [ext_resource path="res://Main/Player/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24.1163, 43.6225 )
+extents = Vector2( 19.5576, 43.5312 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.396835, -44.0849 )
+position = Vector2( -1.22106, -43.5562 )
 shape = SubResource( 1 )
 
 [node name="Player" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -64.0526 )
+position = Vector2( 0, -48.021 )
+scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}

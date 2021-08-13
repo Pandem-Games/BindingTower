@@ -1,11 +1,11 @@
 { "frames": [
    {
     "filename": "Player.aseprite",
-    "frame": { "x": 0, "y": 0, "w": 64, "h": 128 },
+    "frame": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 128 },
-    "sourceSize": { "w": 64, "h": 128 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 32, "h": 48 },
     "duration": 100
    }
  ],
@@ -14,7 +14,7 @@
   "version": "1.2.28-x64",
   "image": "Player.png",
   "format": "RGBA8888",
-  "size": { "w": 64, "h": 128 },
+  "size": { "w": 32, "h": 48 },
   "scale": "1",
   "frameTags": [
   ]
