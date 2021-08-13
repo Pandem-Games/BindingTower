@@ -3,7 +3,6 @@
 [ext_resource path="res://Assests/Font/saved_styles/OptionText.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Button/Button.png" type="Texture" id=2]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 content_margin_left = 10.0
 content_margin_right = 10.0
