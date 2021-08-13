@@ -64,8 +64,8 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_left = 401.0
-margin_right = 1278.0
+margin_left = 380.0
+margin_right = 1300.0
 margin_bottom = 35.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -82,13 +82,14 @@ text = "Video"
 
 [node name="btn_audio" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 388.0
-margin_right = 437.0
+margin_right = 480.0
 margin_bottom = 35.0
+custom_fonts/font = ExtResource( 5 )
 text = "Audio"
 
 [node name="btn_controls" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 737.0
-margin_right = 877.0
+margin_left = 780.0
+margin_right = 920.0
 margin_bottom = 35.0
 custom_fonts/font = ExtResource( 5 )
 text = "Controls"
