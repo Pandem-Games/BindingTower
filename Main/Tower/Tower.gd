@@ -16,9 +16,11 @@ export(int) var circle_vertices
 export(Color) var restricted_color
 onready var range_shape := $Range/Shape
 onready var range_ui := $RangeUI
-onready var tower_area := $Area
+onready var collision_shape := $Collision/Shape
+#onready var tower_area := $Area
 var enemies := []
 var restricted_areas := []
+var restricted_bodies := []
 var elapsed_time := 0.0
 var items := []
 
@@ -86,6 +88,8 @@ func _ready() -> void:
 		circle.push_back(polar2cartesian(radius, i * (TAU / circle_vertices)))
 	range_ui.polygon = circle
 	
+	collision_shape.disabled = true
+	
 	# Setting the tower to selected
 	global_position = get_global_mouse_position()
 	selected()
@@ -119,8 +123,13 @@ func _on_Range_area_exited(area: Area2D) -> void:
 			break
 
 # Signal function called when the tower is overlapping another tower or the path
-func _on_Area_area_entered(area: Area2D) -> void:
+func _on_Area_area_entered(area) -> void:
 	restricted_areas.append(weakref(area))
+	if state == eTower.SELECTING:
+		restricted()
+# Signal function called when the tower is overlapping another restricted body	
+func _on_Area_body_entered(body) -> void:
+	restricted_bodies.append(weakref(body))
 	if state == eTower.SELECTING:
 		restricted()
 
@@ -133,9 +142,21 @@ func _on_Area_area_exited(area: Area2D) -> void:
 			restricted_areas.remove(i)
 			break
 	# If the current area is not overlapping any areas then unrestrict the tower
-	if state == eTower.RESTRICTED and restricted_areas.empty():
+	if state == eTower.RESTRICTED and restricted_areas.empty() and restricted_bodies.empty():
 		selected()
-		
+
+# Signal function called when the tower leaves a restricted placement area
+func _on_Area_body_exited(body) -> void:
+	for i in range(restricted_bodies.size()):
+		# Removing the collision reference when it exits the towers area
+		var restricted_body: KinematicBody2D = restricted_bodies[i].get_ref()
+		if restricted_body == body:
+			restricted_bodies.remove(i)
+			break
+	# If the current area is not overlapping any areas then unrestrict the tower
+	if state == eTower.RESTRICTED and restricted_bodies.empty() and restricted_areas.empty():
+		selected()
+
 # Signal function called when the tower placement gets cancelled
 func _on_Tower_placement_cancelled() -> void:
 	# Deletes the tower if it was being placed
@@ -147,6 +168,7 @@ func _on_TowerControl_gui_input(event: InputEvent) -> void:
 	if state == eTower.SELECTING and event.is_action_pressed("ui_select"):
 		# Disable the towers range ui then change the tower to waiting
 		range_ui.visible = false
+		collision_shape.disabled = false
 		
 		# Adding items to the tower
 		self.items = Helpers.get_items()

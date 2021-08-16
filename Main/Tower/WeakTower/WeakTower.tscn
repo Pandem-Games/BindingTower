@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Main/Bullet/Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main/Tower/Tower.gd" type="Script" id=2]
 [ext_resource path="res://Main/Tower/WeakTower/WeakTower.png" type="Texture" id=3]
 
@@ -20,7 +19,6 @@ script = ExtResource( 2 )
 radius = 100.0
 cooldown_time = 1.0
 circle_vertices = 24
-bullet_resource = ExtResource( 1 )
 restricted_color = Color( 1, 0.376471, 0.376471, 1 )
 
 [node name="Range" type="Area2D" parent="."]
@@ -36,7 +34,7 @@ shape = SubResource( 1 )
 
 [node name="Area" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 10
+collision_mask = 26
 __meta__ = {
 "_edit_group_": true
 }
@@ -45,6 +43,15 @@ __meta__ = {
 position = Vector2( 0, 1.48819 )
 scale = Vector2( 0.927428, 0.813392 )
 shape = SubResource( 2 )
+
+[node name="Collision" type="StaticBody2D" parent="."]
+collision_mask = 17
+
+[node name="Shape" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 0, 1.48819 )
+scale = Vector2( 0.927428, 0.813392 )
+shape = SubResource( 2 )
+disabled = true
 
 [node name="RangeUI" type="Polygon2D" parent="."]
 show_behind_parent = true
@@ -64,4 +71,6 @@ __meta__ = {
 [connection signal="area_exited" from="Range" to="." method="_on_Range_area_exited"]
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
 [connection signal="area_exited" from="Area" to="." method="_on_Area_area_exited"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
 [connection signal="gui_input" from="TowerControl" to="." method="_on_TowerControl_gui_input"]
