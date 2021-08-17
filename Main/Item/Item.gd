@@ -3,7 +3,7 @@ extends Sprite
 class_name Item
 
 # State
-enum eItem {DROPPED, ACTIVE, FINISHED}
+enum eItem {DROPPED, GRABBABLE, ACTIVE, FINISHED}
 var state: int = eItem.DROPPED
 
 # Variables
@@ -57,3 +57,10 @@ func _on_Control_gui_input(event: InputEvent) -> void:
 				Helpers.call_error_function(Helpers, "add_item", [self])
 				state = eItem.ACTIVE
 				Helpers.safe_disconnect(control, "gui_input", self, "_on_Control_gui_input")
+
+func _on_Area_body_entered(_body):
+	state = eItem.GRABBABLE
+
+func _on_Area_body_exited(_body):
+	if state == eItem.GRABBABLE:
+		state = eItem.DROPPED

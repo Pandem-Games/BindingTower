@@ -127,6 +127,7 @@ func _on_Area_area_entered(area) -> void:
 	restricted_areas.append(weakref(area))
 	if state == eTower.SELECTING:
 		restricted()
+
 # Signal function called when the tower is overlapping another restricted body	
 func _on_Area_body_entered(body) -> void:
 	restricted_bodies.append(weakref(body))

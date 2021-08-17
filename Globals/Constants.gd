@@ -19,7 +19,8 @@ enum CollisionLayers {
 	TOWERS,
 	ENEMIES,
 	PATH,
-	PLAYER
+	PLAYER,
+	INTERACTABLE
 }
 
 # Resources

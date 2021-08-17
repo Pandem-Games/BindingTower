@@ -21,5 +21,5 @@ position = Vector2( 0.0977993, -48.2726 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
 animation = "Idle"
-frame = 14
+frame = 20
 playing = true
