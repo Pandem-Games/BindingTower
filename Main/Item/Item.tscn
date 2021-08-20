@@ -476,8 +476,6 @@ bus = "Effects"
 position = Vector2( 0.178152, 25.507 )
 scale = Vector2( 1, 0.75 )
 frames = ExtResource( 3 )
-frame = 9
-playing = true
 
 [node name="Area" type="Area2D" parent="."]
 collision_layer = 32

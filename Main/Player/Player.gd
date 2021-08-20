@@ -22,6 +22,8 @@ export(float, EASE) var transition_speed := 0.615
 var velocity := Vector2()
 var velocity_percentage := 0.0
 
+onready var animation := $Player
+
 # Functions
 
 # Wait state for character waiting for input
@@ -42,6 +44,9 @@ func begin_move(v, delta):
 # Move state when character has reached top speed
 func move(v, delta):
 	velocity = move_and_slide(v * delta)
+	
+func _ready():
+	animation.playing = true
 	
 func _physics_process(delta):
 	# Obtaining directional vector for character movement

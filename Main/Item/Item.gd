@@ -28,6 +28,7 @@ func _ready() -> void:
 	dropped()
 	animation_length = Helpers.get_animation_length(item_shadow.frames, "default")
 	current_time = initial_float_height / animation_length
+	item_shadow.playing = true
 	
 func _process(delta: float) -> void:
 	match state:
