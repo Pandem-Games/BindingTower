@@ -123,13 +123,13 @@ func _on_Range_area_exited(area: Area2D) -> void:
 			break
 
 # Signal function called when the tower is overlapping another tower or the path
-func _on_Area_area_entered(area) -> void:
+func _on_Area_area_entered(area: Area2D) -> void:
 	restricted_areas.append(weakref(area))
 	if state == eTower.SELECTING:
 		restricted()
 
 # Signal function called when the tower is overlapping another restricted body	
-func _on_Area_body_entered(body) -> void:
+func _on_Area_body_entered(body: KinematicBody2D) -> void:
 	restricted_bodies.append(weakref(body))
 	if state == eTower.SELECTING:
 		restricted()
@@ -147,7 +147,7 @@ func _on_Area_area_exited(area: Area2D) -> void:
 		selected()
 
 # Signal function called when the tower leaves a restricted placement area
-func _on_Area_body_exited(body) -> void:
+func _on_Area_body_exited(body: KinematicBody2D) -> void:
 	for i in range(restricted_bodies.size()):
 		# Removing the collision reference when it exits the towers area
 		var restricted_body: KinematicBody2D = restricted_bodies[i].get_ref()
