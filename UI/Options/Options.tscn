@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Options/Options.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Font/yoster.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assests/MenuTheme.tres" type="Theme" id=3]
-[ext_resource path="res://Assests/font/saved_styles/OptionText.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assests/Font/saved_styles/OptionText.tres" type="DynamicFont" id=5]
-
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -79,31 +77,22 @@ __meta__ = {
 [node name="btn_video" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_right = 88.0
 margin_bottom = 35.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "Video"
-align = 0
 
 [node name="btn_audio" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 388.0
 margin_right = 480.0
 margin_bottom = 35.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "Audio"
-align = 0
 
 [node name="btn_controls" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 780.0
 margin_right = 920.0
 margin_bottom = 35.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
 custom_fonts/font = ExtResource( 5 )
 text = "Controls"
-align = 0
 
 [node name="Video" type="GridContainer" parent="VBoxContainer"]
 margin_top = 85.0
@@ -302,6 +291,7 @@ __meta__ = {
 margin_top = 421.0
 margin_right = 1680.0
 margin_bottom = 421.0
+
 [connection signal="pressed" from="btn_back" to="." method="back"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_video" to="." method="video"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/btn_audio" to="." method="audio"]
