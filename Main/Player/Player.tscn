@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Main/Player/PlayerAnimation/Player.res" type="SpriteFrames" id=1]
 [ext_resource path="res://Main/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Main/Player/PlayerAnimation.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 19.5576, 43.5312 )
+extents = Vector2( 18.034, 43.5312 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 z_index = 2
@@ -17,8 +18,11 @@ transition_speed = 0.615572
 position = Vector2( -1.22106, -43.5562 )
 shape = SubResource( 1 )
 
-[node name="Player" type="AnimatedSprite" parent="."]
-position = Vector2( 0.0977993, -48.2726 )
+[node name="Animation" type="AnimatedSprite" parent="."]
+position = Vector2( -0.138163, -59.9552 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
-animation = "Idle"
+animation = "Running"
+script = ExtResource( 3 )
+
+[connection signal="animation_finished" from="Animation" to="Animation" method="_on_Animation_animation_finished"]

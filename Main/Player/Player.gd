@@ -3,8 +3,12 @@ extends KinematicBody2D
 class_name Player
 
 # Constants
+enum Orientation {Left, Right}
 
 # Signals
+signal player_moving
+signal player_flip
+signal player_stop
 
 # State
 enum ePlayer { WAIT, BEGIN_MOVE, MOVING, FINISH }
@@ -21,8 +25,7 @@ export(float, EASE) var transition_speed := 0.615
 
 var velocity := Vector2()
 var velocity_percentage := 0.0
-
-onready var animation := $Player
+var orientation: int = Orientation.Right
 
 # Functions
 
@@ -30,6 +33,7 @@ onready var animation := $Player
 func wait():
 	velocity_percentage = 0.0
 	state = ePlayer.WAIT
+	emit_signal(Constants.PLAYER_STOP)
 
 # Begin move state that eases character movement gradually
 func begin_move(v, delta):
@@ -45,9 +49,6 @@ func begin_move(v, delta):
 func move(v, delta):
 	velocity = move_and_slide(v * delta)
 	
-func _ready():
-	animation.playing = true
-	
 func _physics_process(delta):
 	# Obtaining directional vector for character movement
 	velocity = Vector2()
@@ -61,10 +62,19 @@ func _physics_process(delta):
 		velocity.x += 1
 	velocity = velocity.normalized() * top_running_speed
 	
+	# If the player is changing directions (between left and right) then flip the player sprite
+	if velocity.x > 0 and orientation != Orientation.Right:
+		emit_signal(Constants.PLAYER_FLIP)
+		orientation = Orientation.Right
+	elif velocity.x < 0 and orientation != Orientation.Left:
+		emit_signal(Constants.PLAYER_FLIP)
+		orientation = Orientation.Left
+	
 	# State transitions
 	match state:
 		ePlayer.WAIT:
 			if velocity.length() > 0:
+				emit_signal(Constants.PLAYER_MOVING)
 				state = ePlayer.BEGIN_MOVE
 				begin_move(velocity, delta)
 		ePlayer.BEGIN_MOVE:
