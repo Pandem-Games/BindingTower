@@ -31,7 +31,7 @@ func select() -> void:
 func _on_Tower_gui_input(event: InputEvent) -> void:
 	# This event is also raised by the tower when the user clicks so we have to 
 	# check that the user is clicking on the tower button
-	if event.is_action_pressed("ui_select") and get_rect().has_point(get_local_mouse_position()):
+	if event.is_action_pressed("ui_select") and get_global_rect().has_point(get_global_mouse_position()):
 		match state:
 			# The user is clicking on the tower button, initiating the selection
 			eTowerButton.WAIT:
