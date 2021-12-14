@@ -40,12 +40,12 @@ func hit(bullet: Node2D) -> void:
 # Called when the scene is finished
 func finish() -> void:
 	sprite.visible = false
-	emit_signal(Constants.ENEMY_KILLED, self)
+	emit_signal(Constants.ENEMY_KILLED, self.get_parent().get_parent())
 	state = eEnemy.FINISH
 
 # Differentiating between dying and finishing the path
 func finish_path() -> void:
-	emit_signal(Constants.ENEMY_FINISHED, self)
+	emit_signal(Constants.ENEMY_FINISHED, self.get_parent().get_parent())
 	finish()
 
 # Called when the node enters the scene tree for the first time.

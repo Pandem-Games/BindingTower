@@ -12,7 +12,3 @@ func init(c: Curve2D) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Path.curve = curve
-
-# Signal function called when the enemy is killed
-func _on_Follow_enemy_killed() -> void:
-	queue_free()
