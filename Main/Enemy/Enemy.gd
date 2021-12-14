@@ -3,6 +3,7 @@ extends PathFollow2D
 # Signals
 signal enemy_spawned
 signal enemy_killed
+signal enemy_finished
 
 # State
 enum eEnemy {MOVE, FINISH}
@@ -19,7 +20,7 @@ func move(delta: float) -> void:
 	sprite.visible = true
 	offset += speed * delta
 	if unit_offset >= 1.00:
-		finish()
+		finish_path()
 
 # Calculates a hit from a bullet
 func hit(bullet: Node2D) -> void:
@@ -39,8 +40,13 @@ func hit(bullet: Node2D) -> void:
 # Called when the scene is finished
 func finish() -> void:
 	sprite.visible = false
-	emit_signal(Constants.ENEMY_KILLED)
+	emit_signal(Constants.ENEMY_KILLED, self.get_parent().get_parent())
 	state = eEnemy.FINISH
+
+# Differentiating between dying and finishing the path
+func finish_path() -> void:
+	emit_signal(Constants.ENEMY_FINISHED, self.get_parent().get_parent())
+	finish()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

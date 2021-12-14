@@ -13,3 +13,9 @@ script = ExtResource( 2 )
 [node name="MainPath" type="Path2D" parent="."]
 scale = Vector2( 0.799995, 0.833307 )
 curve = SubResource( 1 )
+
+[node name="PostRound" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="PostRound" to="." method="spawn"]

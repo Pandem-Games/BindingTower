@@ -4,6 +4,7 @@ extends Node
 
 # Signals
 const ENEMY_KILLED = "enemy_killed"
+const ENEMY_FINISHED = "enemy_finished"
 const TOWER_PLACEMENT_CANCELLED = "tower_placement_cancelled"
 const TOWER_PLACEMENT_CONFIRMED = "tower_placement_confirmed"
 const TIMER_TIMEOUT = "timeout"
