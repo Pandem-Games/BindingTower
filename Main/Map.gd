@@ -7,6 +7,7 @@ var lives := 10
 
 # Functions
 func _ready() -> void:
+	lives_label.text = str(lives)
 	var spawner: Node2D = Constants.SPAWNER_RESOURCE.instance()
 	spawner.init(path.curve.duplicate())
 	add_child(spawner)
@@ -16,5 +17,5 @@ func _enemy_finished(_enemy: Node2D) -> void:
 	lives -= 1
 	lives_label.text = str(lives)
 	if lives <= 0:
-		print("game over")
 		# Go to title screen
+		Helpers.call_error_function(get_tree(), "change_scene", [Constants.menu_scene])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assests/Font/yoster.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assests/Font/saved_styles/TitleText.tres" type="DynamicFont" id=2]
@@ -8,8 +8,6 @@
 [sub_resource type="DynamicFont" id=1]
 size = 96
 font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -71,23 +69,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn_continue" type="Button" parent="MarginContainer/HBoxContainer/Menu"]
-margin_top = 17.0
-margin_right = 244.0
-margin_bottom = 71.0
-size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 2 )
-custom_styles/focus = SubResource( 2 )
-text = "Continue"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="btn_newGame" type="Button" parent="MarginContainer/HBoxContainer/Menu"]
-margin_top = 111.0
+margin_top = 64.0
 margin_right = 244.0
-margin_bottom = 165.0
+margin_bottom = 118.0
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/focus = SubResource( 3 )
@@ -98,9 +83,9 @@ __meta__ = {
 }
 
 [node name="btn_options" type="Button" parent="MarginContainer/HBoxContainer/Menu"]
-margin_top = 205.0
+margin_top = 158.0
 margin_right = 212.0
-margin_bottom = 259.0
+margin_bottom = 212.0
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/focus = SubResource( 4 )
@@ -111,9 +96,9 @@ __meta__ = {
 }
 
 [node name="btn_quit" type="Button" parent="MarginContainer/HBoxContainer/Menu"]
-margin_top = 299.0
+margin_top = 252.0
 margin_right = 120.0
-margin_bottom = 353.0
+margin_bottom = 306.0
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/focus = SubResource( 5 )
@@ -147,7 +132,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Menu/btn_continue" to="." method="Continue"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Menu/btn_newGame" to="." method="NewGame"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Menu/btn_options" to="." method="Options"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Menu/btn_quit" to="." method="Quit"]
