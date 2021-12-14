@@ -48,6 +48,7 @@ func spawn() -> void:
 		# Create the enemy
 		var enemy_path: Node2D = Constants.ENEMY_PATH_RESOURCE.instance()
 		Helpers.call_error_function(enemy_path.get_node("Path/Enemy"), "connect", [Constants.ENEMY_KILLED, self, "_enemy_killed"])
+		Helpers.call_error_function(enemy_path.get_node("Path/Enemy"), "connect", [Constants.ENEMY_KILLED, main_node, "_enemy_killed"])		
 		Helpers.call_error_function(enemy_path.get_node("Path/Enemy"), "connect", [Constants.ENEMY_FINISHED, main_node, "_enemy_finished"])
 		enemy_path.init(curve_dup)
 		enemies.append(enemy_path)

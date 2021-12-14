@@ -30,5 +30,8 @@ func _enemy_finished(_enemy: Node2D) -> void:
 		# Go to title screen
 		Helpers.call_error_function(get_tree(), "change_scene", [Constants.menu_scene])
 		
+func _enemy_killed(_enemy: Node2D) -> void:
+	update_gears(gears + 1)
+		
 func _on_Tower_placement_confirmed(cost: int) -> void:
 	update_gears(gears - cost)
