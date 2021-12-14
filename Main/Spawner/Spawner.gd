@@ -20,6 +20,7 @@ var wave: int = 0
 var num_enemies: int = INITIAL_ENEMY_COUNT
 onready var path: Node2D = $MainPath
 onready var post_round_timer : Timer = $PostRound
+onready var main_node: Node2D = Helpers.get_main_node()
 
 # Functions
 func _ready() -> void:
@@ -46,7 +47,8 @@ func spawn() -> void:
 		
 		# Create the enemy
 		var enemy_path: Node2D = Constants.ENEMY_PATH_RESOURCE.instance()
-		Helpers.call_error_function(enemy_path.get_node("Path/Enemy"), "connect", [Constants.ENEMY_KILLED, self, "_enemy_finished"])
+		Helpers.call_error_function(enemy_path.get_node("Path/Enemy"), "connect", [Constants.ENEMY_KILLED, self, "_enemy_killed"])
+		Helpers.call_error_function(enemy_path.get_node("Path/Enemy"), "connect", [Constants.ENEMY_FINISHED, main_node, "_enemy_finished"])
 		enemy_path.init(curve_dup)
 		enemies.append(enemy_path)
 
@@ -80,7 +82,8 @@ func _process(_delta: float) -> void:
 		eSpawner.SPAWN:
 			spawn()
 
-func _enemy_finished(enemy: Node2D) -> void:
+# When the enemy freakin eats shit
+func _enemy_killed(enemy: Node2D) -> void:
 	# Remove from list of enemies
 	if enemies.has(enemy):
 		enemies.erase(enemy)
