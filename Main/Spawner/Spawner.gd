@@ -87,8 +87,6 @@ func _enemy_killed(enemy: Node2D) -> void:
 	# Remove from list of enemies
 	if enemies.has(enemy):
 		enemies.erase(enemy)
-		
-	print(enemies.size())
 	
 	# delete enemy
 	enemy.queue_free()

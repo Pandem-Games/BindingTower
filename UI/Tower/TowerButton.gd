@@ -9,6 +9,7 @@ var state: int = eTowerButton.WAIT
 
 # Variables
 #export(PackedScene) var tower_resource
+onready var main_node: Node2D = Helpers.get_main_node()
 
 # Functions
 func _ready() -> void:
@@ -24,6 +25,7 @@ func select() -> void:
 	Helpers.call_error_function(self, "connect", [Constants.TOWER_PLACEMENT_CANCELLED, tower, "_on_Tower_placement_cancelled"])
 	Helpers.call_error_function(tower, "connect", [Constants.TOWER_PLACEMENT_CONFIRMED, self, "_on_Tower_placement_confirmed"])
 	Helpers.call_error_function(tower.get_node("TowerControl"), "connect", ["gui_input", self, "_on_Tower_gui_input"])
+	Helpers.call_error_function(tower, "connect", [Constants.TOWER_PLACEMENT_CONFIRMED, main_node, "_on_Tower_placement_confirmed"])
 	
 	state = eTowerButton.SELECTED
 
@@ -44,6 +46,6 @@ func _on_Tower_gui_input(event: InputEvent) -> void:
 				accept_event()
 
 # Called when a tower is placed successfully, which resets the tower button
-func _on_Tower_placement_confirmed() -> void:
+func _on_Tower_placement_confirmed(_cost: int) -> void:
 	if state == eTowerButton.SELECTED:
 		state = eTowerButton.WAIT

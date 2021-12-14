@@ -14,9 +14,11 @@ export(float) var radius
 export(float) var cooldown_time
 export(int) var circle_vertices
 export(Color) var restricted_color
+export(int) var cost := 20
 onready var range_shape := $Range/Shape
 onready var range_ui := $RangeUI
 onready var collision_shape := $Collision/Shape
+onready var main_node: Node2D = Helpers.get_main_node()
 #onready var tower_area := $Area
 var enemies := []
 var restricted_areas := []
@@ -92,7 +94,10 @@ func _ready() -> void:
 	
 	# Setting the tower to selected
 	global_position = get_global_mouse_position()
-	selected()
+	if main_node.gears >= cost:
+		selected()
+	else:
+		restricted()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -143,7 +148,7 @@ func _on_Area_area_exited(area: Area2D) -> void:
 			restricted_areas.remove(i)
 			break
 	# If the current area is not overlapping any areas then unrestrict the tower
-	if state == eTower.RESTRICTED and restricted_areas.empty() and restricted_bodies.empty():
+	if state == eTower.RESTRICTED and restricted_areas.empty() and restricted_bodies.empty() and main_node.gears >= cost:
 		selected()
 
 # Signal function called when the tower leaves a restricted placement area
@@ -155,7 +160,7 @@ func _on_Area_body_exited(body: KinematicBody2D) -> void:
 			restricted_bodies.remove(i)
 			break
 	# If the current area is not overlapping any areas then unrestrict the tower
-	if state == eTower.RESTRICTED and restricted_bodies.empty() and restricted_areas.empty():
+	if state == eTower.RESTRICTED and restricted_bodies.empty() and restricted_areas.empty() and main_node.gears >= cost:
 		selected()
 
 # Signal function called when the tower placement gets cancelled
@@ -177,4 +182,4 @@ func _on_TowerControl_gui_input(event: InputEvent) -> void:
 			i._item_initial(self)
 		
 		state = eTower.WAIT
-		emit_signal(Constants.TOWER_PLACEMENT_CONFIRMED)
+		emit_signal(Constants.TOWER_PLACEMENT_CONFIRMED, cost)
