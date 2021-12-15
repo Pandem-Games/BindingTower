@@ -12,7 +12,9 @@ var state: int = eEnemy.MOVE
 # Variables
 export(int) var max_health = 100
 export(int) var speed = 100
+export(float) var drop_rate := 0.05
 onready var sprite := $Area/Collision/Sprite
+onready var main_node: Node2D = Helpers.get_main_node()
 var health: int
 
 # Functions
@@ -39,9 +41,13 @@ func hit(bullet: Node2D) -> void:
 
 # Called when the scene is finished
 func finish() -> void:
-	sprite.visible = false
-	emit_signal(Constants.ENEMY_KILLED, self.get_parent().get_parent())
 	state = eEnemy.FINISH
+	sprite.visible = false
+	if RN.G.randf() <= drop_rate:
+		var item: Node2D = Constants.ITEM_RESOURCES.get(Constants.ITEM_RESOURCES.keys()[RN.G.randi_range(0, Constants.ITEM_RESOURCES.size() - 1)]).instance()
+		main_node.add_child(item)
+		item.global_position = global_position
+	emit_signal(Constants.ENEMY_KILLED, self.get_parent().get_parent())
 
 # Differentiating between dying and finishing the path
 func finish_path() -> void:

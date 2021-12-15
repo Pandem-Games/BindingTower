@@ -25,6 +25,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+speed = 90
 
 [node name="Area" type="Area2D" parent="Path/Enemy"]
 collision_layer = 4

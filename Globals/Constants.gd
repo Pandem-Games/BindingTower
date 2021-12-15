@@ -33,6 +33,11 @@ onready var DAMAGE_NUMBER_RESOURCE := preload("res://UI/DamageNumber/DamageNumbe
 onready var SPAWNER_RESOURCE := preload("res://Main/Spawner/Spawner.tscn")
 onready var ENEMY_PATH_RESOURCE := preload("res://Main/Enemy/EnemyPath.tscn")
 onready var TOWER_RESOURCE := preload("res://Main/Tower/WeakTower/WeakTower.tscn")
+onready var ITEM_RESOURCES := {
+	"BulletClone": preload("res://Main/Item/BulletClone/BulletClone.tscn"),
+	"Overclock": preload("res://Main/Item/Overclock/Overclock.tscn")
+}
+
 
 # Scenes
 const main_scene := "res://Main/Test/Test.tscn"
