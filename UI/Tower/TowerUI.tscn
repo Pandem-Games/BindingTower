@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://UI/Rectangle.png" type="Texture" id=1]
 [ext_resource path="res://Assests/Images/icon.png" type="Texture" id=2]
 [ext_resource path="res://Main/Tower/WeakTower/WeakTower.png" type="Texture" id=3]
 [ext_resource path="res://UI/Tower/TowerButton.gd" type="Script" id=4]
+[ext_resource path="res://UI/Gear.png" type="Texture" id=5]
+[ext_resource path="res://Assests/MenuTheme.tres" type="Theme" id=6]
+[ext_resource path="res://UI/UIBox.png" type="Texture" id=7]
 
 [node name="MainUIMargin" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 6 )
 custom_constants/margin_right = 25
 custom_constants/margin_top = 25
 custom_constants/margin_left = 25
@@ -23,121 +26,146 @@ margin_right = 1895.0
 margin_bottom = 1080.0
 mouse_filter = 2
 
-[node name="Coins" type="HBoxContainer" parent="MainUI"]
+[node name="GearRow" type="HBoxContainer" parent="MainUI"]
 margin_right = 1870.0
-margin_bottom = 30.0
+margin_bottom = 39.0
 mouse_filter = 2
 alignment = 2
 
-[node name="Bar" type="NinePatchRect" parent="MainUI/Coins"]
-margin_left = 1670.0
+[node name="GearArea" type="MarginContainer" parent="MainUI/GearRow"]
+margin_left = 1660.0
 margin_right = 1870.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 200, 30 )
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 120, 120 )
+margin_bottom = 39.0
+
+[node name="GearBackground" type="NinePatchRect" parent="MainUI/GearRow/GearArea"]
+margin_right = 210.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 200, 0 )
+texture = ExtResource( 7 )
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Margin" type="MarginContainer" parent="MainUI/Coins/Bar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 7
-custom_constants/margin_top = 7
-custom_constants/margin_left = 7
-custom_constants/margin_bottom = 7
+[node name="Margin" type="MarginContainer" parent="MainUI/GearRow/GearArea"]
+margin_right = 210.0
+margin_bottom = 39.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Items" type="HBoxContainer" parent="MainUI/Coins/Bar/Margin"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 193.0
-margin_bottom = 23.0
+[node name="Items" type="HBoxContainer" parent="MainUI/GearRow/GearArea/Margin"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 205.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 200, 0 )
 custom_constants/separation = 4
 
-[node name="Amount" type="Label" parent="MainUI/Coins/Bar/Margin/Items"]
-margin_right = 164.0
-margin_bottom = 16.0
+[node name="Amount" type="Label" parent="MainUI/GearRow/GearArea/Margin/Items"]
+margin_right = 64.0
+margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "10"
 valign = 1
 autowrap = true
-clip_text = true
 
-[node name="Container" type="Control" parent="MainUI/Coins/Bar/Margin/Items"]
-margin_left = 168.0
-margin_right = 186.0
-margin_bottom = 16.0
+[node name="Container" type="MarginContainer" parent="MainUI/GearRow/GearArea/Margin/Items"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 29.0
 rect_min_size = Vector2( 18, 0 )
+size_flags_horizontal = 3
 
-[node name="Icon" type="TextureRect" parent="MainUI/Coins/Bar/Margin/Items/Container"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 2 )
+[node name="Icon" type="TextureRect" parent="MainUI/GearRow/GearArea/Margin/Items"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
 expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Life" type="HBoxContainer" parent="MainUI"]
-margin_top = 34.0
+[node name="LifeRow" type="HBoxContainer" parent="MainUI"]
+margin_top = 43.0
 margin_right = 1870.0
-margin_bottom = 64.0
+margin_bottom = 82.0
 mouse_filter = 2
 alignment = 2
 
-[node name="Bar" type="NinePatchRect" parent="MainUI/Life"]
-margin_left = 1670.0
+[node name="LifeArea" type="MarginContainer" parent="MainUI/LifeRow"]
+margin_left = 1660.0
 margin_right = 1870.0
-margin_bottom = 30.0
+margin_bottom = 39.0
+
+[node name="LifeBackground" type="NinePatchRect" parent="MainUI/LifeRow/LifeArea"]
+margin_right = 210.0
+margin_bottom = 39.0
 rect_min_size = Vector2( 200, 30 )
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 120, 120 )
+texture = ExtResource( 7 )
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Margin" type="MarginContainer" parent="MainUI/Life/Bar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 7
-custom_constants/margin_top = 7
-custom_constants/margin_left = 7
-custom_constants/margin_bottom = 7
+[node name="Margin" type="MarginContainer" parent="MainUI/LifeRow/LifeArea"]
+margin_right = 210.0
+margin_bottom = 39.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Items" type="HBoxContainer" parent="MainUI/Life/Bar/Margin"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 193.0
-margin_bottom = 23.0
+[node name="Items" type="HBoxContainer" parent="MainUI/LifeRow/LifeArea/Margin"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 205.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 200, 0 )
 custom_constants/separation = 4
 
-[node name="Amount" type="Label" parent="MainUI/Life/Bar/Margin/Items"]
-margin_right = 164.0
-margin_bottom = 16.0
+[node name="Amount" type="Label" parent="MainUI/LifeRow/LifeArea/Margin/Items"]
+margin_right = 64.0
+margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "5"
 valign = 1
 autowrap = true
-clip_text = true
 
-[node name="Container" type="Control" parent="MainUI/Life/Bar/Margin/Items"]
-margin_left = 168.0
-margin_right = 186.0
-margin_bottom = 16.0
+[node name="Container" type="MarginContainer" parent="MainUI/LifeRow/LifeArea/Margin/Items"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 29.0
 rect_min_size = Vector2( 18, 0 )
+size_flags_horizontal = 3
 
-[node name="Icon" type="TextureRect" parent="MainUI/Life/Bar/Margin/Items/Container"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Icon" type="TextureRect" parent="MainUI/LifeRow/LifeArea/Margin/Items"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 2 )
 expand = true
+stretch_mode = 6
 
 [node name="Gap" type="MarginContainer" parent="MainUI"]
-margin_top = 68.0
+margin_top = 86.0
 margin_right = 1870.0
 margin_bottom = 971.0
 mouse_filter = 2
@@ -152,12 +180,11 @@ mouse_filter = 2
 alignment = 1
 
 [node name="Bar" type="NinePatchRect" parent="MainUI/Bottom"]
-margin_left = 785.0
-margin_right = 1085.0
+margin_left = 885.0
+margin_right = 985.0
 margin_bottom = 80.0
-rect_min_size = Vector2( 300, 80 )
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 120, 120 )
+rect_min_size = Vector2( 100, 80 )
+texture = ExtResource( 7 )
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -175,14 +202,14 @@ __meta__ = {
 
 [node name="Towers" type="HBoxContainer" parent="MainUI/Bottom/Bar/Margin"]
 margin_top = 15.0
-margin_right = 300.0
+margin_right = 100.0
 margin_bottom = 65.0
 mouse_filter = 2
 alignment = 1
 
 [node name="Tower1" type="Control" parent="MainUI/Bottom/Bar/Margin/Towers" groups=["tower_menu_item"]]
-margin_left = 125.0
-margin_right = 175.0
+margin_left = 25.0
+margin_right = 75.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 script = ExtResource( 4 )

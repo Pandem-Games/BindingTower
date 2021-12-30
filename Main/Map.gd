@@ -2,8 +2,8 @@ extends Node2D
 
 # Variables
 onready var path := $Background/Path
-onready var lives_label := $UI/MainUIMargin/MainUI/Life/Bar/Margin/Items/Amount
-onready var gears_label := $UI/MainUIMargin/MainUI/Coins/Bar/Margin/Items/Amount
+onready var lives_label := $UI/MainUIMargin/MainUI/LifeRow/LifeArea/Margin/Items/Amount
+onready var gears_label := $UI/MainUIMargin/MainUI/GearRow/GearArea/Margin/Items/Amount
 var lives := 10
 var gears := 20
 
@@ -24,8 +24,9 @@ func update_gears(g: int) -> void:
 	gears_label.text = str(gears)
 
 # When the enemy freakin wrecks your shit
-func _enemy_finished(_enemy: Node2D) -> void:
+func _enemy_finished(enemy: Node2D) -> void:
 	update_lives(lives - 1)
+	Helpers.safe_disconnect(enemy.get_node("Path/Enemy"), Constants.ENEMY_KILLED, self, "_enemy_killed")
 	if lives <= 0:
 		# Go to title screen
 		Helpers.call_error_function(get_tree(), "change_scene", [Constants.menu_scene])

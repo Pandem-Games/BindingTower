@@ -5,7 +5,7 @@
 [ext_resource path="res://Main/Player/PlayerAnimation.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 18.034, 43.5312 )
+extents = Vector2( 7.55134, 12.3889 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 z_index = 2
@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 transition_speed = 0.615572
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.22106, -43.5562 )
+position = Vector2( -0.829232, -41.1582 )
 shape = SubResource( 1 )
 
 [node name="Animation" type="AnimatedSprite" parent="."]

@@ -56,6 +56,7 @@ func spawn() -> void:
 		yield(get_tree().create_timer(RN.G.randf() * (SPAWN_TIME / num_enemies)), "timeout")
 		self.add_child(enemy_path)
 		
+		
 	state = eSpawner.WAIT
 	
 func wait() -> void:

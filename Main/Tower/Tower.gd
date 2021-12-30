@@ -63,6 +63,8 @@ func cooldown(delta: float) -> void:
 # Changes the tower position to the mouse position
 func follow_mouse() -> void:
 	global_position = get_global_mouse_position()
+	if state == eTower.RESTRICTED and restricted_areas.empty() and restricted_bodies.empty() and main_node.gears >= cost:
+		selected()
 
 # Restricts the tower from being placed
 func restricted() -> void:
