@@ -18,7 +18,6 @@ var update_settings_check = 1
 
 var settings = {
 	"new_choice" : 0, # Choose what music is playing
-	"song" : "",# Song playing
 	
 	# Choose wheather to play game music or menu music
 	"menu" : true,
@@ -64,7 +63,6 @@ func _ready():
 #		update_settings()
 	
 	load_game()
-	choose_music()
 	set_resolution(settings["res_width"], settings["res_height"])
 
 # If user wants to change the input for an action
@@ -94,27 +92,6 @@ func setting_check(old_setting):
 			old_setting[index] = settings[index]
 		elif typeof(settings[index]) == 18 or typeof(settings[index]) == 19:
 			setting_check(old_setting[index])
-
-# Choose the music to play
-func choose_music():
-	if settings["menu"]:
-		choosen_music(menu_music)
-	else:
-		choosen_music(game_music)
-
-# Play and set variables to play just menu music
-func choosen_music(music_array):
-	#inits the randomizer
-	randomize()
-	
-	#chooses the songs
-	settings["new_choice"] =  int(rand_range(0,music_array.size()))
-	
-	#loads in songs
-	settings["song"] = load(music_array[settings["new_choice"]])
-	
-	$music.set_stream(settings["song"])
-	$music.play()
 
 
 func set_volume(volume_value, volume_name):

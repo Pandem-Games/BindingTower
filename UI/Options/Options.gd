@@ -35,6 +35,7 @@ var all_options = {
 onready var video_tab: Control = $VBoxContainer/Video
 onready var audio_tab: Control = $VBoxContainer/Audio
 onready var controls_tab: Control = $VBoxContainer/Controls
+onready var title_screen: Control = get_parent().get_node("TitleScreen")
 
 onready var resolution_options: OptionButton = $VBoxContainer/Video/btn_resolution
 onready var fullscreen_toggle: CheckBox = $VBoxContainer/Video/btn_fullscreen
@@ -75,8 +76,8 @@ func controls() -> void:
 
 
 func back() -> void:
-	Helpers.call_error_function(get_tree(), "change_scene", ["res://UI/TitleScreen/TitleScreen.tscn"])
-
+	visible = false
+	title_screen.visible = true
 
 func set_resolution_btn(item: Array) -> void:
 	var counter = 0

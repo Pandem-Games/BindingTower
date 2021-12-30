@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main/Map.gd" type="Script" id=1]
 [ext_resource path="res://Main/Test/BindingTowerBackground.png" type="Texture" id=2]
+[ext_resource path="res://Assests/Music/LevelMusic.mp3" type="AudioStream" id=3]
 [ext_resource path="res://UI/Tower/TowerUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Main/Item/Overclock/Overclock.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Main/Player/Player.tscn" type="PackedScene" id=9]
@@ -61,3 +62,7 @@ position = Vector2( 420.042, 325.346 )
 
 [node name="Overclock" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1058.25, 179.098 )
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
